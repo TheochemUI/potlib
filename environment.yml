@@ -1,0 +1,23 @@
+# To use:
+#
+#   $ mamba env create -f environment.yml
+#   $ mamba activate rgpot
+#
+name: rgpot
+channels:
+  - conda-forge
+dependencies:
+  - compilers
+  - meson
+  - cmake
+  - gfortran
+  - pkg-config
+  - clang
+  - openblas
+  # Pinned
+  - eigen==3.4.0
+  # Libraries
+  - fmt
+  - spdlog
+  # Testing
+  - gtest
