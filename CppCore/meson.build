@@ -1,9 +1,9 @@
 # Source files
 src_files = [
-  'base_types.cc',
-  'helpers.cc',
-  'Potential.cc',
-  'LennardJones/LJPot.cc',
+  'src/base_types.cc',
+  'src/helpers.cc',
+  'src/Potential.cc',
+  'src/LennardJones/LJPot.cc',
 ]
 
 # Create static library

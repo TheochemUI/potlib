@@ -40,7 +40,7 @@ subdir('CppCore') # defines potlib
 
 if get_option('with_examples')
 example_array = [#
-  ['CallLJPot', 'ljpot_call', 'calling_ljpot.cpp', ''],
+  ['CallLJPot', 'ljpot_call', 'calling_ljpot.cc', ''],
              ]
 # Not really a test but the best way to make tiny executables
 foreach example : example_array
