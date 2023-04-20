@@ -5,8 +5,8 @@
 namespace rgpot {
 
 enum class PotType {
-  UNKOWN = 0,
-  CUH2,
+  UNKNOWN = 0,
+  CuH2,
   LJ
 };
 
