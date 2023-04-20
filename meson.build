@@ -10,6 +10,7 @@ host_system = host_machine.system()
 cpp_args = ['-Wall', '-Wextra', '-Wpedantic']
 _args = []
 _deps = []
+_linkto = []
 
 # Add conditionals
 if host_system == 'darwin'
@@ -35,6 +36,7 @@ gmock_dep = dependency('gmock', required : false)
 # --------------------- Library
 
 subdir('CppCore') # defines potlib
+_linkto += potlib
 
 # ------------------------ Examples
 
@@ -48,7 +50,7 @@ foreach example : example_array
        executable(example.get(1),
           sources : ['CppCore/examples/'+example.get(2)],
           dependencies : _deps,
-          link_with: [potlib],
+          link_with: _linkto,
           cpp_args : _args
                  ),
         workdir : meson.source_root() + example.get(3)
