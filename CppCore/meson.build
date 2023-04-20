@@ -7,9 +7,11 @@ src_files = [
 
 # Implemented potentials
 subdir('src/LennardJones') # 'lennard_jones'
+subdir('src/CuH2') # 'cuh2'
 
 potentials = [
-  lennard_jones
+  lennard_jones,
+  cuh2,
 ]
 
 _linkto += potentials

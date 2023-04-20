@@ -20,6 +20,7 @@ endif
 
 # Languages
 add_languages('c', required: true)
+add_languages('fortran', required: true)
 cc = meson.get_compiler('c')
 cppc = meson.get_compiler('cpp')
 
@@ -43,6 +44,7 @@ _linkto += potlib
 if get_option('with_examples')
 example_array = [#
   ['CallLJPot', 'ljpot_call', 'calling_ljpot.cc', ''],
+  ['CallCuH2Pot', 'cuh2_call', 'calling_cuh2.cc', ''],
              ]
 # Not really a test but the best way to make tiny executables
 foreach example : example_array
