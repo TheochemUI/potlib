@@ -5,4 +5,5 @@ minimal, binding friendly interfaces for ease of usage from Python or even R.
 This was originally designed for interfacing easily to potentials implemented [[http://theory.cm.utexas.edu/eon/][in
 EON]], but has grown to be more flexible.
 * License
-MIT
+MIT, however note that some of the potentials are adapted from EON which is
+under a BSD 3-Clause License.
