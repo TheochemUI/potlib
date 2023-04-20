@@ -1,3 +1,6 @@
+# Added
+/compile_commands.json
+*.tmp
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -255,6 +258,3 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-
-
-/compile_commands.json
