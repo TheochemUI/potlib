@@ -8,9 +8,9 @@ host_system = host_machine.system()
 
 # Add C++ compiler options
 cpp_args = ['-Wall', '-Wextra', '-Wpedantic']
-_args = []
-_deps = []
-_linkto = []
+_args = [cpp_args] # Extra arguments
+_deps = [] # Dependencies
+_linkto = [] # All the sub-libraries (potentials)
 
 # Add conditionals
 if host_system == 'darwin'

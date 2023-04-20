@@ -1,4 +1,3 @@
-#pragma once
 #include "LJPot.hpp"
 
 namespace rgpot {
