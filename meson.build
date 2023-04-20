@@ -35,3 +35,23 @@ gmock_dep = dependency('gmock', required : false)
 # --------------------- Library
 
 subdir('CppCore') # defines potlib
+
+# ------------------------ Examples
+
+if get_option('with_examples')
+example_array = [#
+  ['CallLJPot', 'ljpot_call', 'calling_ljpot.cpp', ''],
+             ]
+# Not really a test but the best way to make tiny executables
+foreach example : example_array
+  test(example.get(0),
+       executable(example.get(1),
+          sources : ['CppCore/examples/'+example.get(2)],
+          dependencies : _deps,
+          link_with: [potlib],
+          cpp_args : _args
+                 ),
+        workdir : meson.source_root() + example.get(3)
+      )
+endforeach
+endif
