@@ -5,7 +5,7 @@ namespace rgpot {
 class LJPot : public Potential {
 public:
   // Constructor initializes potential type and atom properties
-  LJPot() : Potential(rgpot::PotType::LJ), u0{1.0}, cuttOffR{15.0}, psi{1.0} {}
+  LJPot() : Potential(PotType::LJ), u0{1.0}, cuttOffR{15.0}, psi{1.0} {}
 
   std::pair<double, AtomMatrix>
   operator()(const Eigen::Ref<const AtomMatrix> &positions,
