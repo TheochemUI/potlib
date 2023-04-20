@@ -3,6 +3,7 @@ src_files = [
   'base_types.cc',
   'helpers.cc',
   'Potential.cc',
+  'LennardJones/LJPot.cc',
 ]
 
 # Create static library
