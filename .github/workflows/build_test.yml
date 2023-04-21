@@ -1,0 +1,24 @@
+name: Build and Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  buildmamba:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
+          fetch-depth: 0
+      - name: Install Conda environment
+        uses: mamba-org/provision-with-micromamba@main
+      - name: Build and Test
+        shell: bash -l {0}
+        run: |
+          meson setup bbdir -Dwith_tests=True
+          meson test -C bbdir
