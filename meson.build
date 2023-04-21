@@ -15,7 +15,7 @@ _linkto = [] # All the sub-libraries (potentials)
 # Add conditionals
 if host_system == 'darwin'
   _args += ['-DOSX=TRUE']
-  add_global_arguments(['-faligned-allocation'], language: 'cpp')
+  cpp_args += ['-faligned-allocation']
 endif
 
 # Languages
