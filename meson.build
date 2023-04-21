@@ -46,7 +46,7 @@ example_array = [#
   ['CallLJPot', 'ljpot_call', 'calling_ljpot.cc', ''],
   ['CallCuH2Pot', 'cuh2_call', 'calling_cuh2.cc', ''],
              ]
-# Not really a test but the best way to make tiny executables
+# Not really a test but the best way to make tiny programs
 foreach example : example_array
   test(example.get(0),
        executable(example.get(1),
@@ -56,6 +56,27 @@ foreach example : example_array
           cpp_args : _args
                  ),
         workdir : meson.source_root() + example.get(3)
+      )
+endforeach
+endif
+
+# ------------------------ Tests
+
+if get_option('with_tests')
+  _args += ['-DPOTTEST']
+  _deps += [ gtest_dep, gmock_dep ]
+test_array = [#
+  ['CuH2', 'cuh2_run', 'CuH2PotTest.cc', ''],
+             ]
+foreach test : test_array
+  test(test.get(0),
+       executable(test.get(1),
+          sources : ['CppCore/gtests/'+test.get(2)],
+          dependencies : _deps,
+          link_with : _linkto,
+          cpp_args : _args
+                 ),
+        workdir : meson.source_root() + test.get(3)
       )
 endforeach
 endif
