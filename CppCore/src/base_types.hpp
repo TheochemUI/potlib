@@ -1,4 +1,5 @@
 #pragma once
+#define FMT_HEADER_ONLY
 
 #include <algorithm>
 #include <any>
@@ -22,6 +23,7 @@
 #include <fmt/os.h>
 #include <fmt/ostream.h>
 #include <fmt/ranges.h>
+
 #include <spdlog/fmt/ostr.h>
 #include <spdlog/spdlog.h>
 
