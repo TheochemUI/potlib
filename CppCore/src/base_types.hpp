@@ -23,9 +23,6 @@
 #include <fmt/ostream.h>
 #include <fmt/ranges.h>
 
-#include <spdlog/fmt/ostr.h>
-#include <spdlog/spdlog.h>
-
 #include <Eigen/Dense>
 #include <Eigen/Eigenvalues>
 

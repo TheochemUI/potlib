@@ -25,15 +25,12 @@ cc = meson.get_compiler('c')
 cppc = meson.get_compiler('cpp')
 
 # Dependencies
-eigen_dep = dependency('Eigen3', method : 'cmake', modules : ['Eigen3::Eigen'], required : true)
+# All installed with meson wrap install <blah> originally
+subproject('eigen')
 subproject('fmt')
-fmt_dep = dependency('fmt')
-spdlog_dep = dependency('spdlog', required : true)
-_deps += [ spdlog_dep, fmt_dep, eigen_dep ]
-
-# Testing only
-gtest_dep = dependency('gtest', main : true, required : true)
-gmock_dep = dependency('gmock', required : false)
+eigen_dep = dependency('eigen3', version: '3.4.0', required: true)
+fmt_dep = dependency('fmt', required: true)
+_deps += [ eigen_dep, fmt_dep ]
 
 # --------------------- Library
 
@@ -64,6 +61,9 @@ endif
 # ------------------------ Tests
 
 if get_option('with_tests')
+  subproject('gtest')
+  gtest_dep = dependency('gtest', main : true, required : true)
+  gmock_dep = dependency('gmock', required : false)
   _args += ['-DPOTTEST']
   _deps += [ gtest_dep, gmock_dep ]
 test_array = [#
