@@ -1,5 +1,4 @@
 #pragma once
-#define FMT_HEADER_ONLY
 
 #include <algorithm>
 #include <any>
