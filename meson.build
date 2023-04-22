@@ -26,7 +26,8 @@ cppc = meson.get_compiler('cpp')
 
 # Dependencies
 eigen_dep = dependency('Eigen3', method : 'cmake', modules : ['Eigen3::Eigen'], required : true)
-fmt_dep = dependency('fmt', required : true)
+subproject('fmt')
+fmt_dep = dependency('fmt')
 spdlog_dep = dependency('spdlog', required : true)
 _deps += [ spdlog_dep, fmt_dep, eigen_dep ]
 

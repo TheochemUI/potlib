@@ -1,6 +1,8 @@
 # Added
 /compile_commands.json
 *.tmp
+subprojects/
+!subprojects/*.wrap
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
