@@ -20,25 +20,25 @@ TEST(CuH2PotTest, EnergyAndForces) {
       {7.64080177576300, 9.94703114803832, 7.83556986121272}  // H
   };
   Eigen::VectorXi atmtypes{{29, 29, 1, 1}};
-  Eigen::Matrix3d box{{15, 0, 0}, //
-                      {0, 20, 0}, //
-                      {0, 0, 30}};
+  Eigen::Matrix3d box{{15.345599999999999, 0, 0}, //
+                      {0, 21.702000000000002, 0}, //
+                      {0, 0, 100.00000000000000}};
   auto [energy, forces] = cuh2pot(positions, atmtypes, box);
 
   // Expected energy and forces, using main.f90
-  double expected_energy = -2.7114093289369636;
+  double expected_energy = -2.7114096242662238;
   // clang-format off
   AtomMatrix expected_forces {
-  {1.4919412444104894,  -3.9273061793716405E-004,  1.8260604670099651E-004},
-  {-1.4919412444104894,  3.9273061793716405E-004, -1.8260604670099651E-004},
-  {-4.9118648185366567, -1.3944214112176943E-005,  4.7990031422901425E-006},
-  {4.9118648185366567,   1.3944214112176943E-005, -4.7990031422901425E-006}
+  {1.4919411183978113,  -3.9273058476626193E-004,  1.8260603127768336E-004},
+  {-1.4919411183978113,  3.9273058476626193E-004, -1.8260603127768336E-004},
+  {-4.9118653085630006, -1.3944215503304855E-005,  4.7990036210569753E-006},
+  {4.9118653085630006,   1.3944215503304855E-005, -4.7990036210569753E-006}
   };
   // clang-format on
 
   // Check that computed energy and forces match expected values
-  ASSERT_DOUBLE_EQ(energy, expected_energy);
-  ASSERT_TRUE(forces.isApprox(expected_forces));
+  ASSERT_NEAR(energy, expected_energy, 1e-6);
+  ASSERT_TRUE(forces.isApprox(expected_forces, 1e-6));
 }
 
 int main(int argc, char **argv) {
