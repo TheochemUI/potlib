@@ -17,11 +17,13 @@
 
 #include <cxxabi.h>
 
+#ifdef NOT_PURE_LIB
 #include <fmt/core.h>
 #include <fmt/format.h>
 #include <fmt/os.h>
 #include <fmt/ostream.h>
 #include <fmt/ranges.h>
+#endif
 
 #include <Eigen/Dense>
 #include <Eigen/Eigenvalues>

@@ -27,10 +27,15 @@ cppc = meson.get_compiler('cpp')
 # Dependencies
 # All installed with meson wrap install <blah> originally
 subproject('eigen')
-subproject('fmt')
 eigen_dep = dependency('eigen3', version: '3.4.0', required: true)
-fmt_dep = dependency('fmt', required: true)
-_deps += [ eigen_dep, fmt_dep ]
+_deps += eigen_dep
+
+if not get_option('pure_lib')
+  _args += ['-DNOT_PURE_LIB=TRUE']
+  subproject('fmt')
+  fmt_dep = dependency('fmt', required: true)
+  _deps += fmt_dep
+endif
 
 # --------------------- Library
 
