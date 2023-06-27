@@ -16,7 +16,7 @@ potentials = [
 
 _linkto += potentials
 
-# Create static library
+# Create library
 potlib = library('pot',
                  src_files,
                  dependencies: _deps,

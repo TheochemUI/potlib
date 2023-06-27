@@ -1,4 +1,4 @@
-cuh2 = shared_library('cuh2',
+cuh2 = library('cuh2',
            'CuH2Pot.cc',
            'eam_isoc.f90',
            'eamroutines.f90',
