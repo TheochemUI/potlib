@@ -25,6 +25,11 @@ cc = meson.get_compiler('c')
 cppc = meson.get_compiler('cpp')
 
 # Dependencies
+# libm for Unix systems
+m_dep = cppc.find_library('m', required: false)
+_deps += m_dep
+# For clang
+_deps += [declare_dependency(link_args: '-lstdc++')]
 # All installed with meson wrap install <blah> originally
 subproject('eigen')
 eigen_dep = dependency('eigen3', version: '3.4.0', required: true)
