@@ -4,10 +4,6 @@
 
 namespace rgpot {
 
-enum class PotType {
-  UNKNOWN = 0,
-  CuH2,
-  LJ
-};
+enum class PotType { UNKNOWN = 0, CuH2, LJ };
 
 }

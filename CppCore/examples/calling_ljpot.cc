@@ -5,9 +5,9 @@ int main(void) {
   using namespace rgpot;
   auto ljpot = LJPot();
   AtomMatrix positions{
-      {1, 2, 3},      //
+      {1, 2, 3},       //
       {1.5, 2.5, 3.5}, //
-      {4, 5, 6}      //
+      {4, 5, 6}        //
   };
   Eigen::VectorXi atmtypes{{0, 0, 0}};
   Eigen::Matrix3d box{{15, 0, 0}, //

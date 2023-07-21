@@ -7,7 +7,7 @@ CuH2Pot::operator()(const Eigen::Ref<const AtomMatrix> &positions,
                     const Eigen::Ref<const Eigen::Matrix3d> &box) const {
   std::multiset<double> natmc;
   const auto N = positions.rows();
-  int natms[2]{0, 0}; // Always Cu, then H
+  int natms[2]{0, 0};                // Always Cu, then H
   int ndim{3 * static_cast<int>(N)}; // see main.f90
   for (auto idx : atmtypes) {
     natmc.insert(idx);
@@ -28,7 +28,8 @@ CuH2Pot::operator()(const Eigen::Ref<const AtomMatrix> &positions,
   double energy{std::numeric_limits<double>::infinity()};
   AtomMatrix forces{Eigen::MatrixXd::Zero(N, 3)};
 
-  c_force_eam(natms, ndim, box_eam, const_cast<double *>(positions.data()), forces.data(), &energy);
+  c_force_eam(natms, ndim, box_eam, const_cast<double *>(positions.data()),
+              forces.data(), &energy);
 
   return {energy, forces};
 }
