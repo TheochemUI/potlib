@@ -31,8 +31,12 @@ _deps += m_dep
 # For clang
 _deps += [declare_dependency(link_args: '-lstdc++')]
 # All installed with meson wrap install <blah> originally
-subproject('eigen')
-eigen_dep = dependency('eigen3', version: '3.4.0', required: true)
+eigen_dep = dependency('eigen', version: '3.4.0')
+if not eigen_dep.found()
+  eigen_dep = dependency('eigen', version: '3.4.0',
+                         subproject: subproject('eigen'),
+                         required: true)
+endif
 _deps += eigen_dep
 
 if not get_option('pure_lib')
