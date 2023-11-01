@@ -55,4 +55,3 @@ _deps += [fortcuh2_dep]
 
 subdir('CppCore') # defines potlib
 _linkto += potlib
-
