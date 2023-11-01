@@ -1,8 +1,5 @@
 # Source files
 src_files = [
-  'src/base_types.cc',
-  'src/helpers.cc',
-  'src/Potential.cc',
 ]
 
 # Implemented potentials

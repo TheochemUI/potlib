@@ -58,6 +58,8 @@ _linkto += potlib
 # ------------------------ Examples
 
 if get_option('with_examples')
+fmt_dep = dependency('fmt', required: true)
+_deps += fmt_dep
 example_array = [#
   ['CallLJPot', 'ljpot_call', 'calling_ljpot.cc', ''],
   ['CallCuH2Pot', 'cuh2_call', 'calling_cuh2.cc', ''],

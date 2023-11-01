@@ -1,5 +1,6 @@
 #include "../src/LennardJones/LJPot.hpp"
 #include <cstdlib>
+#include <fmt/ostream.h>
 
 int main(void) {
   using namespace rgpot;
