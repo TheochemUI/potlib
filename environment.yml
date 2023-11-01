@@ -21,3 +21,7 @@ dependencies:
   - spdlog
   # Testing
   - catch2
+  # Precommits
+  - cppcheck
+  - cpplint
+  - clang-tools
