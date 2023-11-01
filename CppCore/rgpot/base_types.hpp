@@ -27,19 +27,3 @@
 #include <fmt/ostream.h>
 #include <fmt/ranges.h>
 #endif
-
-#include <Eigen/Dense>
-#include <Eigen/Eigenvalues>
-
-using Eigen::Dynamic;
-using Eigen::Matrix;
-using Eigen::RowMajor;
-using std::literals::string_literals::operator""s;
-
-namespace rgpot {
-using AtomMatrix =
-    Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>;
-using AtomVector =
-    Eigen::Matrix<double, Eigen::Dynamic, 1>; // Same as a normal VectorXd
-                                              // The potentials
-} // namespace rgpot

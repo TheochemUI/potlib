@@ -3,8 +3,11 @@
 // Copyright 2023--present Rohit Goswami <HaoZeke>
 // clang-format off
 #include <utility>
+#include <vector>
 // clang-format on
 #include "rgpot/Potential.hpp"
+#include "rgpot/types/AtomMatrix.hpp"
+using rgpot::types::AtomMatrix;
 
 namespace rgpot {
 class LJPot : public Potential {
@@ -13,9 +16,8 @@ public:
   LJPot() : Potential(PotType::LJ), u0{1.0}, cuttOffR{15.0}, psi{1.0} {}
 
   std::pair<double, AtomMatrix>
-  operator()(const Eigen::Ref<const AtomMatrix> &positions,
-             const Eigen::Ref<const Eigen::VectorXi> &atmtypes,
-             const Eigen::Ref<const Eigen::Matrix3d> &box) const override;
+  operator()(const AtomMatrix &positions, const std::vector<int> &atmtypes,
+             const std::array<std::array<double, 3>, 3> &box) const override;
 
 private:
   // Variables

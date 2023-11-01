@@ -5,12 +5,14 @@
 #include <set>
 // clang-format on
 #include "rgpot/CuH2/CuH2Pot.hpp"
+#include "rgpot/types/AtomMatrix.hpp"
+using rgpot::types::AtomMatrix;
 
 namespace rgpot {
 std::pair<double, AtomMatrix>
-CuH2Pot::operator()(const Eigen::Ref<const AtomMatrix> &positions,
-                    const Eigen::Ref<const Eigen::VectorXi> &atmtypes,
-                    const Eigen::Ref<const Eigen::Matrix3d> &box) const {
+CuH2Pot::operator()(const AtomMatrix &positions,
+                    const std::vector<int> &atmtypes,
+                    const std::array<std::array<double, 3>, 3> &box) const {
   std::multiset<double> natmc;
   const auto N = positions.rows();
   int natms[2]{0, 0};                // Always Cu, then H
@@ -30,10 +32,9 @@ CuH2Pot::operator()(const Eigen::Ref<const AtomMatrix> &positions,
   }
 
   // The box only takes the diagonal (assumes cubic)
-  double box_eam[]{box(0, 0), box(1, 1), box(2, 2)};
+  double box_eam[]{box[0][0], box[1][1], box[2][2]};
   double energy{std::numeric_limits<double>::infinity()};
-  AtomMatrix forces{Eigen::MatrixXd::Zero(N, 3)};
-
+  AtomMatrix forces = AtomMatrix::Zero(N, 3);
   c_force_eam(natms, ndim, box_eam, const_cast<double *>(positions.data()),
               forces.data(), &energy);
 
