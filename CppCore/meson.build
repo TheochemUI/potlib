@@ -56,7 +56,7 @@ if get_option('with_tests')
   foreach test : test_array
     test(test.get(0),
          executable(test.get(1),
-                    sources : ['gtests/'+test.get(2)],
+                    sources : ['tests/'+test.get(2)],
                     dependencies : test_deps,
                     include_directories: _incdirs,
                     cpp_args: test_args,
