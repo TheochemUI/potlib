@@ -17,6 +17,18 @@ using AtomVector = std::vector<double>;
 // A row major matrix class
 class AtomMatrix {
 public:
+  // Constructor to allow list initialization
+  AtomMatrix(std::initializer_list<std::initializer_list<double>> list)
+      : m_rows(list.size()), m_cols((list.begin())->size()),
+        m_data(m_rows * m_cols) {
+    size_t rowIdx = 0;
+    for (const auto &rowList : list) {
+      std::copy(rowList.begin(), rowList.end(),
+                m_data.begin() + rowIdx * m_cols);
+      ++rowIdx;
+    }
+  }
+
   AtomMatrix(size_t rows, size_t cols)
       : m_rows(rows), m_cols(cols), m_data(rows * cols) {}
 
