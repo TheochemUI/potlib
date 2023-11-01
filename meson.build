@@ -11,6 +11,7 @@ cpp_args = ['-Wall', '-Wextra', '-Wpedantic']
 _args = [cpp_args] # Extra arguments
 _deps = [] # Dependencies
 _linkto = [] # All the sub-libraries (potentials)
+_incdirs = [] # All the includes
 
 # Add conditionals
 if host_system == 'darwin'
@@ -81,23 +82,27 @@ endif
 # ------------------------ Tests
 
 if get_option('with_tests')
-  subproject('gtest')
-  gtest_dep = dependency('gtest', main : true, required : true)
-  gmock_dep = dependency('gmock', required : false)
-  _args += ['-DPOTTEST']
-  _deps += [ gtest_dep, gmock_dep ]
-test_array = [#
-  ['CuH2', 'cuh2_run', 'CuH2PotTest.cc', ''],
-             ]
-foreach test : test_array
-  test(test.get(0),
-       executable(test.get(1),
-          sources : ['CppCore/gtests/'+test.get(2)],
-          dependencies : _deps,
-          link_with : _linkto,
-          cpp_args : _args
-                 ),
-        workdir : meson.source_root() + test.get(3)
-      )
-endforeach
+  test_deps = _deps
+  test_deps += dependency(
+    'Catch2',
+    method: 'cmake',
+    modules: ['Catch2::Catch2WithMain'],
+  )
+  test_args = _args
+  test_args += ['-DPOTTEST']
+  test_array = [#
+    ['CuH2', 'cuh2_run', 'CuH2PotTest.cc', ''],
+  ]
+  foreach test : test_array
+    test(test.get(0),
+         executable(test.get(1),
+                    sources : ['CppCore/gtests/'+test.get(2)],
+                    dependencies : test_deps,
+                    include_directories: _incdirs,
+                    cpp_args: test_args,
+                    link_with: _linkto,
+                   ),
+         workdir : meson.source_root() + test.get(3)
+        )
+  endforeach
 endif
