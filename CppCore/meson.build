@@ -50,7 +50,7 @@ if get_option('with_tests')
   test_args = _args
   test_args += ['-DPOTTEST']
   test_array = [#
-    # ['CuH2', 'cuh2_run', 'CuH2PotTest.cc', ''],
+    ['CuH2test', 'cuh2_test', 'CuH2PotTest.cc', ''],
   ]
   foreach test : test_array
     test(test.get(0),

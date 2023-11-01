@@ -3,9 +3,10 @@
 #include <catch2/catch_all.hpp>
 
 #include "rgpot/CuH2/CuH2Pot.hpp"
+#include "rgpot/types/AtomMatrix.hpp"
 
 TEST_CASE("CuH2Pot Energy and Forces", "[CuH2Pot]") {
-  using rgpot::AtomMatrix;
+  using rgpot::types::AtomMatrix;
   auto cuh2pot = rgpot::CuH2Pot();
   AtomMatrix positions{
       {0.63940268750835, 0.90484742551374, 6.97516498544584}, // Cu
@@ -13,12 +14,12 @@ TEST_CASE("CuH2Pot Energy and Forces", "[CuH2Pot]") {
       {8.98363230369760, 9.94703496017833, 7.83556854923689}, // H
       {7.64080177576300, 9.94703114803832, 7.83556986121272}  // H
   };
-  Eigen::VectorXi atmtypes{{29, 29, 1, 1}};
-  Eigen::Matrix3d box{
+  std::vector<int> atmtypes{29, 29, 1, 1};
+  std::array<std::array<double, 3>, 3> box{{
       {15.345599999999999, 0, 0}, //
       {0, 21.702000000000002, 0}, //
       {0, 0, 100.00000000000000}  //
-  };
+  }};
   auto [energy, forces] = cuh2pot(positions, atmtypes, box);
 
   double expected_energy = -2.7114096242662238;
