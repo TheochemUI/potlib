@@ -19,9 +19,12 @@ int main(void) {
   };
 
   std::vector<int> atomTypes{29, 29, 1, 1};
-  std::array<std::array<double, 3>, 3> boxMatrix{15, 0,  0, //
-                                                 0,  20, 0, //
-                                                 0,  0,  30};
+  std::array<std::array<double, 3>, 3> boxMatrix{{
+      //
+      {15, 0, 0}, //
+      {0, 20, 0}, //
+      {0, 0, 30}  //
+  }};
   auto [energy, forces] = cuh2pot(positions, atomTypes, boxMatrix);
   fmt::print("Got energy {}\n Forces:\n{}", energy, fmt::streamed(forces));
   return EXIT_SUCCESS;
