@@ -1,3 +1,5 @@
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 #include "../src/CuH2/CuH2Pot.hpp"
 #include <cstdlib>
 #include <fmt/ostream.h>

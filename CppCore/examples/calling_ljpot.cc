@@ -1,3 +1,5 @@
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 #include "../src/LennardJones/LJPot.hpp"
 #include <cstdlib>
 #include <fmt/ostream.h>

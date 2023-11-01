@@ -1,3 +1,5 @@
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 #include "CuH2Pot.hpp"
 
 namespace rgpot {

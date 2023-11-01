@@ -1,3 +1,5 @@
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 #include "LJPot.hpp"
 
 namespace rgpot {

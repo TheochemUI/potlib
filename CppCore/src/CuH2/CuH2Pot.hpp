@@ -1,4 +1,6 @@
 #pragma once
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
 #include "../Potential.hpp"
 
 // natms(2), ndim, U(1), R(ndim), F(ndim), box(3)
