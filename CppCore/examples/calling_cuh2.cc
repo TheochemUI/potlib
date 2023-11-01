@@ -1,5 +1,6 @@
 #include "../src/CuH2/CuH2Pot.hpp"
 #include <cstdlib>
+#include <fmt/ostream.h>
 
 int main(void) {
   using namespace rgpot;

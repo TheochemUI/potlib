@@ -45,6 +45,11 @@ if not get_option('pure_lib')
   _deps += fmt_dep
 endif
 
+# --------------------- Subprojects
+fortcuh2_proj = subproject('fortcuh2')
+fortcuh2_dep = fortcuh2_proj.get_variable('fortcuh2_dep')
+_deps += [fortcuh2_dep]
+
 # --------------------- Library
 
 subdir('CppCore') # defines potlib
@@ -53,6 +58,8 @@ _linkto += potlib
 # ------------------------ Examples
 
 if get_option('with_examples')
+fmt_dep = dependency('fmt', required: true)
+_deps += fmt_dep
 example_array = [#
   ['CallLJPot', 'ljpot_call', 'calling_ljpot.cc', ''],
   ['CallCuH2Pot', 'cuh2_call', 'calling_cuh2.cc', ''],
