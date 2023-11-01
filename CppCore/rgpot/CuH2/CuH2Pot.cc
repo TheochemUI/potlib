@@ -1,9 +1,15 @@
-#include "CuH2Pot.hpp"
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
+// clang-format off
+#include <limits>
+#include <set>
+// clang-format on
+#include "rgpot/CuH2/CuH2Pot.hpp"
 
 namespace rgpot {
 std::pair<double, AtomMatrix>
 CuH2Pot::operator()(const Eigen::Ref<const AtomMatrix> &positions,
-                    const Eigen::Ref<const VectorXi> &atmtypes,
+                    const Eigen::Ref<const Eigen::VectorXi> &atmtypes,
                     const Eigen::Ref<const Eigen::Matrix3d> &box) const {
   std::multiset<double> natmc;
   const auto N = positions.rows();

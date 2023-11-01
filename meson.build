@@ -51,7 +51,9 @@ fortcuh2_proj = subproject('fortcuh2')
 fortcuh2_dep = fortcuh2_proj.get_variable('fortcuh2_dep')
 _deps += [fortcuh2_dep]
 
-# --------------------- Library
-
-subdir('CppCore') # defines potlib
-_linkto += potlib
+# --------------------- Projects
+subdir('CppCore')
+_incdirs += [ 'CppCore' ]
+potlib_dep = declare_dependency(include_directories: _incdirs,
+                                link_with: _linkto,
+                                dependencies: _deps)

@@ -1,5 +1,10 @@
 #pragma once
-#include "../Potential.hpp"
+// MIT License
+// Copyright 2023--present Rohit Goswami <HaoZeke>
+// clang-format off
+#include <utility>
+// clang-format on
+#include "rgpot/Potential.hpp"
 
 // natms(2), ndim, U(1), R(ndim), F(ndim), box(3)
 extern "C" void c_force_eam(int *natms, int ndim, double *box, double *R,
@@ -13,7 +18,7 @@ public:
 
   std::pair<double, AtomMatrix>
   operator()(const Eigen::Ref<const AtomMatrix> &positions,
-             const Eigen::Ref<const VectorXi> &atmtypes,
+             const Eigen::Ref<const Eigen::VectorXi> &atmtypes,
              const Eigen::Ref<const Eigen::Matrix3d> &box) const override;
 
 private:
