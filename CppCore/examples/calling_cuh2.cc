@@ -1,11 +1,13 @@
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
-#include "../src/CuH2/CuH2Pot.hpp"
-#include <cstdlib>
+// clang-format off
 #include <fmt/ostream.h>
+#include <cstdlib>
+// clang-format on
+#include "../src/CuH2/CuH2Pot.hpp"
 
 int main(void) {
-  using namespace rgpot;
+  using rgpot::AtomMatrix;
   auto cuh2pot = CuH2Pot();
   AtomMatrix positions{
       {0.63940268750835, 0.90484742551374, 6.97516498544584}, // Cu

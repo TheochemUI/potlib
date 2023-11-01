@@ -1,11 +1,13 @@
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
-#include "../src/LennardJones/LJPot.hpp"
-#include <cstdlib>
+// clang-format off
 #include <fmt/ostream.h>
+#include <cstdlib>
+// clang-format on
+#include "../src/LennardJones/LJPot.hpp"
 
 int main(void) {
-  using namespace rgpot;
+  using rgpot::AtomMatrix;
   auto ljpot = LJPot();
   AtomMatrix positions{
       {1, 2, 3},       //
