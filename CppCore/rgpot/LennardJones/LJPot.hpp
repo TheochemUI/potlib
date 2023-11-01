@@ -1,7 +1,10 @@
 #pragma once
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
-#include "../Potential.hpp"
+// clang-format off
+#include <utility>
+// clang-format on
+#include "rgpot/Potential.hpp"
 
 namespace rgpot {
 class LJPot : public Potential {
@@ -11,7 +14,7 @@ public:
 
   std::pair<double, AtomMatrix>
   operator()(const Eigen::Ref<const AtomMatrix> &positions,
-             const Eigen::Ref<const VectorXi> &atmtypes,
+             const Eigen::Ref<const Eigen::VectorXi> &atmtypes,
              const Eigen::Ref<const Eigen::Matrix3d> &box) const override;
 
 private:

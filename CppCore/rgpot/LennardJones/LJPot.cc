@@ -1,12 +1,13 @@
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
-#include "LJPot.hpp"
+#include "rgpot/LennardJones/LJPot.hpp"
+#include <limits>
 
 namespace rgpot {
 
 std::pair<double, AtomMatrix>
 LJPot::operator()(const Eigen::Ref<const AtomMatrix> &positions,
-                  const Eigen::Ref<const VectorXi> &atmtypes,
+                  const Eigen::Ref<const Eigen::VectorXi> &atmtypes,
                   const Eigen::Ref<const Eigen::Matrix3d> &box) const {
   double energy{std::numeric_limits<double>::infinity()};
   long nAtoms{positions.rows()};

@@ -1,6 +1,9 @@
 #pragma once
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
+// clang-format off
+#include <cxxabi.h>
+// clang-format on
 
 #include <algorithm>
 #include <any>
@@ -17,8 +20,6 @@
 #include <string>
 #include <type_traits>
 
-#include <cxxabi.h>
-
 #ifdef NOT_PURE_LIB
 #include <fmt/core.h>
 #include <fmt/format.h>
@@ -30,8 +31,10 @@
 #include <Eigen/Dense>
 #include <Eigen/Eigenvalues>
 
-using namespace Eigen;
-using namespace std::string_literals; // For ""s
+using Eigen::Dynamic;
+using Eigen::Matrix;
+using Eigen::RowMajor;
+using std::literals::string_literals::operator""s;
 
 namespace rgpot {
 using AtomMatrix =

@@ -25,4 +25,4 @@ repos:
       entry: cpplint
       language: system
       types_or: [c++, c]
-      args: ["--filter=-whitespace/comments,-runtime/references,-whitespace/indent"]
+      args: ["--filter=-whitespace/comments,-runtime/references,-whitespace/indent,-runtime/int,-build/c++11"]

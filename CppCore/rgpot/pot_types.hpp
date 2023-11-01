@@ -2,7 +2,7 @@
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
 
-#include "base_types.hpp"
+#include "rgpot/base_types.hpp"
 
 namespace rgpot {
 
