@@ -20,4 +20,8 @@ dependencies:
   - fmt
   - spdlog
   # Testing
-  - gtest
+  - catch2
+  # Precommits
+  - cppcheck
+  - cpplint
+  - clang-tools

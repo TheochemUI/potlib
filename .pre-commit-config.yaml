@@ -7,13 +7,16 @@ repos:
   - id: end-of-file-fixer
   - id: check-yaml
   - id: check-added-large-files
-- repo: https://github.com/pseewald/fprettify
-  rev: v0.3.7
-  hooks:
-  - id: fprettify
-    args: ["-c", ".fprettify.rc"]
 - repo: https://github.com/pre-commit/mirrors-clang-format
   rev: v16.0.6
   hooks:
   - id: clang-format
     types_or: [c++, c]
+- repo: local
+  hooks:
+    - id: cppcheck
+      name: cppcheck
+      entry: cppcheck
+      language: system
+      types_or: [c++, c]
+      args: ["--error-exitcode=0"]
