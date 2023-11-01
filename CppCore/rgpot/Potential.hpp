@@ -3,6 +3,7 @@
 // Copyright 2023--present Rohit Goswami <HaoZeke>
 // clang-format off
 #include <utility>
+#include <vector>
 // clang-format on
 
 #include "rgpot/pot_types.hpp"

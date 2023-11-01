@@ -9,24 +9,21 @@
 using rgpot::types::AtomMatrix;
 
 int main(void) {
-    auto ljpot = rgpot::LJPot();
+  auto ljpot = rgpot::LJPot();
 
-    Eigen::MatrixXd positions(3, 3);
-    positions << 1, 2, 3,
-                 1.5, 2.5, 3.5,
-                 4, 5, 6;
+  Eigen::MatrixXd positions(3, 3);
+  positions << 1, 2, 3, 1.5, 2.5, 3.5, 4, 5, 6;
 
-    Eigen::VectorXi atomTypes(3);
-    atomTypes << 0, 0, 0;
+  Eigen::VectorXi atomTypes(3);
+  atomTypes << 0, 0, 0;
 
-    Eigen::Matrix3d boxMatrix;
-    boxMatrix << 15, 0, 0,
-                 0, 20, 0,
-                 0, 0, 30;
+  Eigen::Matrix3d boxMatrix;
+  boxMatrix << 15, 0, 0, 0, 20, 0, 0, 0, 30;
 
-    auto [energy, forces] = ljpot(convertToAtomMatrix(positions), convertToVector(atomTypes), convertToEigen3d(boxMatrix));
-    fmt::print("Got energy {}\n Forces:\n{}", energy, fmt::streamed(forces));
+  auto [energy, forces] =
+      ljpot(convertToAtomMatrix(positions), convertToVector(atomTypes),
+            convertToEigen3d(boxMatrix));
+  fmt::print("Got energy {}\n Forces:\n{}", energy, fmt::streamed(forces));
 
-    return EXIT_SUCCESS;
+  return EXIT_SUCCESS;
 }
-

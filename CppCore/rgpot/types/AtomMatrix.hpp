@@ -5,6 +5,7 @@
 #include <cxxabi.h>
 // clang-format on
 
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <vector>

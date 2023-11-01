@@ -1,16 +1,18 @@
 // MIT License
 // Copyright 2023--present Rohit Goswami <HaoZeke>
-#include "rgpot/LennardJones/LJPot.hpp"
-#include <limits>
+// clang-format off
 #include <cmath>
+#include <limits>
+// clang-format on
+
+#include "rgpot/LennardJones/LJPot.hpp"
 #include "rgpot/types/AtomMatrix.hpp"
 using rgpot::types::AtomMatrix;
 
 namespace rgpot {
 
 std::pair<double, AtomMatrix>
-LJPot::operator()(const AtomMatrix &positions,
-                  const std::vector<int> &atmtypes,
+LJPot::operator()(const AtomMatrix &positions, const std::vector<int> &atmtypes,
                   const std::array<std::array<double, 3>, 3> &box) const {
   double energy{std::numeric_limits<double>::infinity()};
   auto nAtoms{positions.rows()};

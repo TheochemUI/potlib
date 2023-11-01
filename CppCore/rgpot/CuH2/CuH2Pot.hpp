@@ -3,6 +3,7 @@
 // Copyright 2023--present Rohit Goswami <HaoZeke>
 // clang-format off
 #include <utility>
+#include <vector>
 // clang-format on
 #include "rgpot/Potential.hpp"
 #include "rgpot/types/AtomMatrix.hpp"
@@ -19,8 +20,7 @@ public:
   CuH2Pot() : Potential(PotType::CuH2) {}
 
   std::pair<double, AtomMatrix>
-  operator()(const AtomMatrix &positions,
-             const std::vector<int> &atmtypes,
+  operator()(const AtomMatrix &positions, const std::vector<int> &atmtypes,
              const std::array<std::array<double, 3>, 3> &box) const override;
 
 private:
