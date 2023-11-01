@@ -1,6 +1,6 @@
 # Implemented potentials
-subdir('src/LennardJones') # 'lennard_jones'
-subdir('src/CuH2') # 'cuh2'
+subdir('rgpot/LennardJones') # 'lennard_jones'
+subdir('rgpot/CuH2') # 'cuh2'
 
 potentials = [
   lennard_jones,
@@ -58,7 +58,7 @@ if get_option('with_tests')
          executable(test.get(1),
                     sources : ['tests/'+test.get(2)],
                     dependencies : test_deps,
-                    include_directories: _incdirs,
+                    include_directories: _incdirs + ['.'],
                     cpp_args: test_args,
                     link_with: _linkto,
                    ),

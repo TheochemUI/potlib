@@ -4,11 +4,11 @@
 #include <fmt/ostream.h>
 #include <cstdlib>
 // clang-format on
-#include "../src/LennardJones/LJPot.hpp"
+#include "rgpot/LennardJones/LJPot.hpp"
 
 int main(void) {
   using rgpot::AtomMatrix;
-  auto ljpot = LJPot();
+  auto ljpot = rgpot::LJPot();
   AtomMatrix positions{
       {1, 2, 3},       //
       {1.5, 2.5, 3.5}, //
