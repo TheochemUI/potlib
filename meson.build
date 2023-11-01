@@ -31,13 +31,21 @@ m_dep = cppc.find_library('m', required: false)
 _deps += m_dep
 # For clang
 _deps += [declare_dependency(link_args: '-lstdc++')]
-eigen_dep = dependency('eigen3')
-if not eigen_dep.found()
-  eigen_dep = dependency('eigen3',
-                         subproject: subproject('eigen'),
-                         required: true)
+
+if get_option('with_examples')
+  # Eigen
+  eigen_dep = dependency('eigen3')
+  if not eigen_dep.found()
+    eigen_dep = dependency('eigen3',
+                           subproject: subproject('eigen'),
+                           required: true)
+  endif
+  _deps += eigen_dep
+  # fmt
+  fmt_dep = dependency('fmt', required: true)
+  _deps += fmt_dep
 endif
-_deps += eigen_dep
+
 
 if not get_option('pure_lib')
   _args += ['-DNOT_PURE_LIB=TRUE']

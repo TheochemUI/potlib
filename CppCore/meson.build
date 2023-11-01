@@ -19,11 +19,10 @@ potlib = library('pot',
 # ------------------------ Examples
 
 if get_option('with_examples')
-fmt_dep = dependency('fmt', required: true)
-_deps += fmt_dep
 example_array = [#
   ['EigenCallLJPot', 'ljpot_call_eig', 'eigen_call_ljpot.cc', ''],
   ['EigenCallCuH2Pot', 'cuh2_call_eig', 'eigen_call_cuh2.cc', ''],
+  ['CallCuH2Pot', 'cuh2_call', 'call_cuh2.cc', ''],
              ]
 # Not really a test but the best way to make tiny programs
 foreach example : example_array
