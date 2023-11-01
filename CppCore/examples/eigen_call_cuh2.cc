@@ -7,6 +7,9 @@
 #include "rgpot/CuH2/CuH2Pot.hpp"
 #include "rgpot/types/adapters/eigen.hpp"
 using rgpot::types::AtomMatrix;
+using rgpot::types::adapt::eigen::convertToAtomMatrix;
+using rgpot::types::adapt::eigen::convertToEigen3d;
+using rgpot::types::adapt::eigen::convertToVector;
 
 int main(void) {
   auto cuh2pot = rgpot::CuH2Pot();
@@ -22,7 +25,7 @@ int main(void) {
                             {0, 20, 0}, //
                             {0, 0, 30}};
   auto [energy, forces] =
-      cuh2pot(convertToAtomMatrix(positions), convertToVector(atomTypes),
+      cuh2pot(convertToAtomMatrix(positions), convertToVector<int>(atomTypes),
               convertToEigen3d(boxMatrix));
   fmt::print("Got energy {}\n Forces:\n{}", energy, fmt::streamed(forces));
   return EXIT_SUCCESS;

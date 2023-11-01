@@ -11,6 +11,11 @@
 
 using rgpot::types::AtomMatrix;
 
+namespace rgpot {
+namespace types {
+namespace adapt {
+namespace eigen {
+
 // Convert from Eigen::MatrixXd to AtomMatrix
 inline AtomMatrix convertToAtomMatrix(const Eigen::MatrixXd &matrix) {
   AtomMatrix result(matrix.rows(), matrix.cols());
@@ -30,8 +35,9 @@ inline Eigen::MatrixXd convertToEigen(const AtomMatrix &atomMatrix) {
 }
 
 // Convert from Eigen::VectorXi to std::vector<int>
-inline std::vector<int> convertToVector(const Eigen::VectorXi &vector) {
-  return std::vector<int>(vector.data(), vector.data() + vector.size());
+template <typename T>
+std::vector<T> convertToVector(const Eigen::VectorX<T> &vector) {
+  return std::vector<T>(vector.data(), vector.data() + vector.size());
 }
 
 // Convert from Matrix3d to std::array<std::array<double, 3>, 3>
@@ -45,3 +51,8 @@ convertToEigen3d(const Eigen::Matrix3d &matrix) {
   }
   return result;
 }
+
+} // namespace eigen
+} // namespace adapt
+} // namespace types
+} // namespace rgpot
