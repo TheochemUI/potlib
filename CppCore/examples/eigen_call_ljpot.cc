@@ -24,9 +24,7 @@ int main(void) {
                  0, 20, 0,
                  0, 0, 30;
 
-    auto [energy, forcesInAtomMatrix] = ljpot(convertToAtomMatrix(positions), convertToVector(atomTypes), convertToEigen3d(boxMatrix));
-    auto forces = convertToEigen(forcesInAtomMatrix);
-
+    auto [energy, forces] = ljpot(convertToAtomMatrix(positions), convertToVector(atomTypes), convertToEigen3d(boxMatrix));
     fmt::print("Got energy {}\n Forces:\n{}", energy, fmt::streamed(forces));
 
     return EXIT_SUCCESS;

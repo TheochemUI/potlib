@@ -22,7 +22,6 @@ int main(void) {
                       {0, 20, 0}, //
                       {0, 0, 30}};
   auto [energy, forces] = cuh2pot(convertToAtomMatrix(positions), convertToVector(atomTypes), convertToEigen3d(boxMatrix));
-  auto forcesEig = convertToEigen(forces);
-  fmt::print("Got energy {}\n Forces:\n{}", energy, fmt::streamed(forcesEig));
+  fmt::print("Got energy {}\n Forces:\n{}", energy, fmt::streamed(forces));
   return EXIT_SUCCESS;
 }

@@ -5,6 +5,8 @@
 #include <cxxabi.h>
 // clang-format on
 
+#include <iomanip>
+#include <iostream>
 #include <vector>
 
 namespace rgpot {
@@ -37,6 +39,27 @@ public:
 
   double *data() { return m_data.data(); }
   const double *data() const { return m_data.data(); }
+
+  // Overload the stream insertion operator for AtomMatrix
+  friend std::ostream &operator<<(std::ostream &os, const AtomMatrix &matrix) {
+    std::ios oldState(nullptr);
+    oldState.copyfmt(os); // Save the current format state of the ostream
+    os << std::fixed << std::setprecision(5);
+    for (size_t i = 0; i < matrix.m_rows; ++i) {
+      for (size_t j = 0; j < matrix.m_cols; ++j) {
+        double value = matrix(i, j);
+        if (std::abs(value) < 0.001) {
+          os << std::scientific;
+        } else {
+          os << std::fixed;
+        }
+        os << std::setw(12) << value << ' ';
+      }
+      os << '\n';
+    }
+    os.copyfmt(oldState); // Restore the old format state before returning
+    return os;
+  }
 
 private:
   size_t m_rows, m_cols;
