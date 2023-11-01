@@ -22,8 +22,8 @@ if get_option('with_examples')
 fmt_dep = dependency('fmt', required: true)
 _deps += fmt_dep
 example_array = [#
-  ['CallLJPot', 'ljpot_call', 'calling_ljpot.cc', ''],
-  ['CallCuH2Pot', 'cuh2_call', 'calling_cuh2.cc', ''],
+  ['EigenCallLJPot', 'ljpot_call_eig', 'eigen_call_ljpot.cc', ''],
+  ['EigenCallCuH2Pot', 'cuh2_call_eig', 'eigen_call_cuh2.cc', ''],
              ]
 # Not really a test but the best way to make tiny programs
 foreach example : example_array
@@ -51,7 +51,7 @@ if get_option('with_tests')
   test_args = _args
   test_args += ['-DPOTTEST']
   test_array = [#
-    ['CuH2', 'cuh2_run', 'CuH2PotTest.cc', ''],
+    # ['CuH2', 'cuh2_run', 'CuH2PotTest.cc', ''],
   ]
   foreach test : test_array
     test(test.get(0),

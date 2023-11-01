@@ -2,18 +2,27 @@
 // Copyright 2023--present Rohit Goswami <HaoZeke>
 #include "rgpot/LennardJones/LJPot.hpp"
 #include <limits>
+#include <cmath>
+#include "rgpot/types/AtomMatrix.hpp"
+using rgpot::types::AtomMatrix;
 
 namespace rgpot {
 
 std::pair<double, AtomMatrix>
-LJPot::operator()(const Eigen::Ref<const AtomMatrix> &positions,
-                  const Eigen::Ref<const Eigen::VectorXi> &atmtypes,
-                  const Eigen::Ref<const Eigen::Matrix3d> &box) const {
+LJPot::operator()(const AtomMatrix &positions,
+                  const std::vector<int> &atmtypes,
+                  const std::array<std::array<double, 3>, 3> &box) const {
   double energy{std::numeric_limits<double>::infinity()};
-  long nAtoms{positions.rows()};
-  AtomMatrix forces{Eigen::MatrixXd::Zero(nAtoms, 3)};
+  auto nAtoms{positions.rows()};
+  AtomMatrix forces = AtomMatrix::Zero(nAtoms, 3);
+  double flatBox[9];
+  for (size_t i = 0; i < 3; ++i) {
+    for (size_t j = 0; j < 3; ++j) {
+      flatBox[i * 3 + j] = box[i][j];
+    }
+  }
   this->force(nAtoms, positions.data(), atmtypes.data(), forces.data(), &energy,
-              box.data());
+              flatBox);
   return std::make_pair(energy, forces);
 }
 
