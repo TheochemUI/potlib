@@ -45,6 +45,11 @@ if not get_option('pure_lib')
   _deps += fmt_dep
 endif
 
+# --------------------- Subprojects
+fortcuh2_proj = subproject('fortcuh2')
+fortcuh2_dep = fortcuh2_proj.get_variable('fortcuh2_dep')
+_deps += [fortcuh2_dep]
+
 # --------------------- Library
 
 subdir('CppCore') # defines potlib
