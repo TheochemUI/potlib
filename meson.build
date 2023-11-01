@@ -44,6 +44,9 @@ if get_option('with_examples')
   # fmt
   fmt_dep = dependency('fmt', required: true)
   _deps += fmt_dep
+  # xtensor
+  xtensor_dep = dependency('xtensor', required: true)
+  _deps += xtensor_dep
 endif
 
 
