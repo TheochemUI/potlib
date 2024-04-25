@@ -45,8 +45,10 @@ if get_option('with_examples')
   fmt_dep = dependency('fmt', required: true)
   _deps += fmt_dep
   # xtensor
-  xtensor_dep = dependency('xtensor', required: true)
-  _deps += xtensor_dep
+  # TODO: Make this conditional
+  _deps += dependency('xtensor')
+  _deps += dependency('xtensor-blas')
+  _args += ['-DWITH_XTENSOR=TRUE']
 endif
 
 
@@ -62,6 +64,9 @@ fortcuh2_proj = subproject('fortcuh2')
 fortcuh2_dep = fortcuh2_proj.get_variable('fortcuh2_dep')
 _deps += [fortcuh2_dep]
 
+readcon_proj = subproject('readcon')
+readcon_dep = readcon_proj.get_variable('readcon_dep')
+_deps += [readcon_dep]
 # --------------------- Projects
 subdir('CppCore')
 _incdirs += [ 'CppCore' ]
