@@ -22,9 +22,9 @@ namespace xts {
 xt::xtensor<double, 2>
 extract_positions(const yodecon::types::ConFrameVec &frame);
 xt::xtensor<double, 2>
-peturb_positions(const xt::xtensor<double, 2> &base_positions,
-                 const xt::xtensor<int, 1> &atmNumVec, double hcu_dist,
-                 double hh_dist);
+perturb_positions(const xt::xtensor<double, 2> &base_positions,
+                  const xt::xtensor<int, 1> &atmNumVec, double hcu_dist,
+                  double hh_dist);
 std::pair<double, double>
 calculateDistances(const xt::xtensor<double, 2> &positions,
                    const xt::xtensor<int, 1> &atmNumVec);
@@ -35,11 +35,12 @@ void ensure_normalized(E &&vector, bool is_normalized = false,
                        ScalarType tol = static_cast<ScalarType>(1e-6)) {
   if (!is_normalized) {
     auto norm = xt::linalg::norm(vector, 2);
-    if (std::abs(norm - static_cast<ScalarType>(1.0)) >= tol) {
-      vector /= norm;
-    } else {
+    if (norm == 0.0) {
       throw std::runtime_error(
           "Cannot normalize a vector whose norm is smaller than tol");
+    }
+    if (std::abs(norm - static_cast<ScalarType>(1.0)) >= tol) {
+      vector /= norm;
     }
   }
 }

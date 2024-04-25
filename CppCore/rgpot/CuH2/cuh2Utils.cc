@@ -5,7 +5,6 @@
 #include <limits>
 // clang-format on
 #include "rgpot/CuH2/cuh2Utils.hpp"
-#include "include/ReadCon.hpp"
 using rgpot::types::AtomMatrix;
 
 #ifdef WITH_XTENSOR
@@ -27,9 +26,9 @@ extract_positions(const yodecon::types::ConFrameVec &frame) {
 }
 
 xt::xtensor<double, 2>
-peturb_positions(const xt::xtensor<double, 2> &base_positions,
-                 const xt::xtensor<int, 1> &atmNumVec, double hcu_dist,
-                 double hh_dist) {
+perturb_positions(const xt::xtensor<double, 2> &base_positions,
+                  const xt::xtensor<int, 1> &atmNumVec, double hcu_dist,
+                  double hh_dist) {
   xt::xtensor<double, 2> positions = base_positions;
   std::vector<size_t> hIndices, cuIndices;
 
