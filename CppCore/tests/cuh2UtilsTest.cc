@@ -4,6 +4,7 @@
 
 #include "rgpot/CuH2/cuh2Utils.hpp"
 
+// TODO(rg): This should really be in readcon, it is an adaptor essentially
 TEST_CASE("extract_positions correctly extracts position vectors",
           "[extract_positions]") {
   yodecon::types::ConFrameVec conFrameVec;
