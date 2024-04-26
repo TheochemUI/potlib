@@ -90,4 +90,5 @@ _incdirs += [include_directories('CppCore')]
 subdir('CppCore')
 potlib_dep = declare_dependency(include_directories: _incdirs,
                                 link_with: _linkto,
+                                compile_args: _args,
                                 dependencies: _deps)
