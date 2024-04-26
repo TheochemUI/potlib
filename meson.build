@@ -68,8 +68,8 @@ readcon_proj = subproject('readcon')
 readcon_dep = readcon_proj.get_variable('readcon_dep')
 _deps += [readcon_dep]
 # --------------------- Projects
+_incdirs += [include_directories('CppCore')]
 subdir('CppCore')
-_incdirs += [ 'CppCore' ]
 potlib_dep = declare_dependency(include_directories: _incdirs,
                                 link_with: _linkto,
                                 dependencies: _deps)

@@ -1,4 +1,4 @@
 [wrap-git]
-directory=readcon
+directory=readCon
 url=https://github.com/HaoZeke/readCon.git
 revision=8d32495d1132682693aa053e1ccdb180bec57615
