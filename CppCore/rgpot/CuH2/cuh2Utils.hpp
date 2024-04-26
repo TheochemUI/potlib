@@ -5,7 +5,7 @@
 #include <utility>
 #include <vector>
 // clang-format on
-#include "include/ReadCon.hpp"
+#include "readCon/include/ReadCon.hpp"
 #include "rgpot/types/AtomMatrix.hpp"
 #ifdef WITH_XTENSOR
 #include "xtensor-blas/xlinalg.hpp"
