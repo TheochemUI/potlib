@@ -34,21 +34,39 @@ _deps += [declare_dependency(link_args: '-lstdc++')]
 
 if get_option('with_examples')
   # Eigen
-  eigen_dep = dependency('eigen3')
-  if not eigen_dep.found()
-    eigen_dep = dependency('eigen3',
-                           subproject: subproject('eigen'),
-                           required: true)
+  if not get_option('with_eigen')
+    eigen_dep = dependency('eigen3')
+    if not eigen_dep.found()
+      eigen_dep = dependency('eigen3',
+                             subproject: subproject('eigen'),
+                             required: true)
+    endif
+    _deps += eigen_dep
   endif
-  _deps += eigen_dep
   # fmt
   fmt_dep = dependency('fmt', required: true)
   _deps += fmt_dep
-  # xtensor
-  # TODO: Make this conditional
+  if not get_option('with_xtensor')
+    # These are added if not done later
+    _deps += dependency('xtensor')
+    _deps += dependency('xtensor-blas')
+    _args += ['-DWITH_XTENSOR=TRUE']
+  endif
+endif
+
+if get_option('with_xtensor')
   _deps += dependency('xtensor')
   _deps += dependency('xtensor-blas')
   _args += ['-DWITH_XTENSOR=TRUE']
+endif
+
+if get_option('with_eigen')
+    eigen_dep = dependency('eigen3')
+    if not eigen_dep.found()
+      eigen_dep = dependency('eigen3',
+                             subproject: subproject('eigen'))
+    endif
+    _deps += eigen_dep
 endif
 
 
