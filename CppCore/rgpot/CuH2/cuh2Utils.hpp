@@ -5,7 +5,6 @@
 #include <utility>
 #include <vector>
 // clang-format on
-#include "readCon/include/ReadCon.hpp"
 #include "rgpot/types/AtomMatrix.hpp"
 #ifdef WITH_XTENSOR
 #include "xtensor-blas/xlinalg.hpp"
@@ -19,8 +18,6 @@ namespace cuh2 {
 namespace utils {
 #ifdef WITH_XTENSOR
 namespace xts {
-xt::xtensor<double, 2>
-extract_positions(const yodecon::types::ConFrameVec &frame);
 xt::xtensor<double, 2>
 perturb_positions(const xt::xtensor<double, 2> &base_positions,
                   const xt::xtensor<int, 1> &atmNumVec, double hcu_dist,

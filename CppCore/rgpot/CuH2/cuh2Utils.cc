@@ -11,21 +11,6 @@ using rgpot::types::AtomMatrix;
 namespace rgpot::cuh2::utils::xts {
 
 xt::xtensor<double, 2>
-extract_positions(const yodecon::types::ConFrameVec &frame) {
-  size_t n_atoms = frame.x.size();
-  std::array<size_t, 2> shape = {static_cast<size_t>(n_atoms), 3};
-
-  xt::xtensor<double, 2> positions = xt::empty<double>(shape);
-  for (size_t i = 0; i < n_atoms; ++i) {
-    positions(i, 0) = frame.x[i];
-    positions(i, 1) = frame.y[i];
-    positions(i, 2) = frame.z[i];
-  }
-
-  return positions;
-}
-
-xt::xtensor<double, 2>
 perturb_positions(const xt::xtensor<double, 2> &base_positions,
                   const xt::xtensor<int, 1> &atmNumVec, double hcu_dist,
                   double hh_dist) {

@@ -82,9 +82,6 @@ fortcuh2_proj = subproject('fortcuh2')
 fortcuh2_dep = fortcuh2_proj.get_variable('fortcuh2_dep')
 _deps += [fortcuh2_dep]
 
-readcon_proj = subproject('readcon')
-readcon_dep = readcon_proj.get_variable('readcon_dep')
-_deps += [readcon_dep]
 # --------------------- Projects
 _incdirs += [include_directories('CppCore')]
 subdir('CppCore')
