@@ -1,4 +1,4 @@
 [wrap-git]
 directory=fortcuh2
 url=https://github.com/TheochemUI/fortran_cuh2_src.git
-revision=23b344cabef96e4c3e5612ccc0238e7cddd67fca
+revision=v0.0.2
