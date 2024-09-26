@@ -5,7 +5,7 @@ The core library is header-only, though adapt functions are provided for interfa
 to ~Eigen~ and ~xtensor~.
 
 This was originally designed for interfacing easily to potentials implemented [[http://theory.cm.utexas.edu/eon/][in
-EON]], but has grown to be more flexible.
+eOn]], but has grown to be more flexible.
 
 *** Developing locally
 A ~pre-commit~ job is setup on CI to enforce consistent styles, so it is best to
@@ -18,5 +18,5 @@ pipx run pre-commit run --all-files
 pipx run pre-commit install
 #+end_src
 * License
-MIT, however note that some of the potentials are adapted from EON which is
+MIT, however note that some of the potentials are adapted from eOn which is
 under a BSD 3-Clause License.
