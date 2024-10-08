@@ -15,18 +15,14 @@ jobs:
         with:
           submodules: "recursive"
           fetch-depth: 0
-      - name: Install Conda environment
-        uses: mamba-org/setup-micromamba@v1
+      - name: Install environment
+        uses: prefix-dev/setup-pixi@v0.8.0
         with:
-          micromamba-version: '1.5.8-0'
-          environment-file: environment.yml
-          init-shell: >-
-            bash
-            powershell
-          cache-environment: true
-          post-cleanup: 'all'
+          pixi-version: 'v0.32.0'
+          cache: true
+          cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
       - name: Build and Test
-        shell: bash -l {0}
+        shell: pixi run bash -e {0}
         run: |
           meson setup bbdir -Dwith_tests=True
           meson test -C bbdir

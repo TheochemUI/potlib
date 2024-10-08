@@ -1,0 +1,26 @@
+[project]
+authors = ["Rohit Goswami <rog32@hi.is>"]
+channels = ["conda-forge"]
+description = "Cpp core for potential energy surface functionality."
+name = "potlib"
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+compilers = ">=1.8.0,<2"
+meson = ">=1.5.2,<2"
+cmake = ">=3.30.4,<4"
+pkgconfig = ">=1.5.5,<2"
+openblas = ">=0.3.28,<0.4"
+xtensor = ">=0.25.0,<0.26"
+eigen = "==3.4.0"
+fmt = ">=11.0.2,<12"
+spdlog = ">=1.14.1,<2"
+catch2 = ">=3.7.1,<4"
+cppcheck = ">=2.15.0,<3"
+cpplint = ">=1.6.0,<2"
+pipx = ">=1.7.1,<2"
+fortran-compiler = ">=1.8.0,<2"
+clang-format = ">=19.1.0,<20"
