@@ -2,7 +2,7 @@ project(
     'pot',
     'cpp',
     version: '0.1.0',
-    default_options: ['warning_level=2', 'cpp_std=c++17'],
+    default_options: ['warning_level=2', 'cpp_std=c++20'],
 )
 # IMPORTANT!! warning_level=3 passes -fimplicit-none
 # Many of the older Fortran codes need implicit typing
