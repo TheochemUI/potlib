@@ -6,6 +6,13 @@ to ~Eigen~ and ~xtensor~.
 
 This was originally designed for interfacing easily to potentials implemented [[http://theory.cm.utexas.edu/eon/][in
 eOn]], but has grown to be more flexible.
+** Usage
+Setting up and running tests:
+#+begin_src bash
+pixi shell
+meson setup bbdir -Dwith_tests=True --buildtype="debug"
+mseon test -C bbdir
+#+end_src
 
 *** Developing locally
 A ~pre-commit~ job is setup on CI to enforce consistent styles, so it is best to
