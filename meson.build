@@ -36,7 +36,7 @@ _deps += m_dep
 _deps += [declare_dependency(link_args: '-lstdc++')]
 
 if get_option('with_examples')
-# Eigen
+    # Eigen
     if not get_option('with_eigen')
         eigen_dep = dependency('eigen3')
         if not eigen_dep.found()
@@ -52,7 +52,7 @@ if get_option('with_examples')
     fmt_dep = dependency('fmt', required: true)
     _deps += fmt_dep
     if not get_option('with_xtensor')
-# These are added if not done later
+        # These are added if not done later
         _deps += dependency('xtensor')
         _deps += dependency('xtensor-blas')
         _args += ['-DWITH_XTENSOR=TRUE']
