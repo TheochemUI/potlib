@@ -1,7 +1,7 @@
 project(
     'pot',
     'cpp',
-    version: '0.1',
+    version: '0.1.0',
     default_options: ['warning_level=2', 'cpp_std=c++17'],
 )
 # IMPORTANT!! warning_level=3 passes -fimplicit-none
