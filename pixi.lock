@@ -15,6 +15,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/c-ares-1.33.1-heb4867d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/c-compiler-1.8.0-h2b85faf_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/ca-certificates-2024.8.30-hbcca054_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/capnproto-1.0.2-h766bdaa_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/catch2-3.7.1-h84d6215_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/clang-format-19-19.1.0-default_hb5137d0_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/clang-format-19.1.0-default_hb5137d0_0.conda
@@ -105,6 +106,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-64/c-ares-1.33.1-h44e7173_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/c-compiler-1.8.0-hb714fc7_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/ca-certificates-2024.8.30-h8857fd0_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/osx-64/capnproto-1.0.2-heb0326a_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/catch2-3.7.1-h37c8870_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/cctools-1010.6-h5b2de21_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/cctools_osx-64-1010.6-h98e843e_1.conda
@@ -200,6 +202,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/c-ares-1.33.1-hd74edd7_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/c-compiler-1.8.0-h2664225_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/ca-certificates-2024.8.30-hf0a4a13_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/capnproto-1.0.2-hcee422a_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/catch2-3.7.1-h7b3277c_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/cctools-1010.6-hf67d63f_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/cctools_osx-arm64-1010.6-h4208deb_1.conda
@@ -297,6 +300,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/win-64/bzip2-1.0.8-h2466b09_7.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/c-compiler-1.8.0-hcfcfb64_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/ca-certificates-2024.8.30-h56e8100_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/win-64/capnproto-1.0.2-hb5d7e06_2.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/catch2-3.7.1-hc790b64_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/clang-format-19.1.0-default_hec7ea82_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/clangdev-5.0.0-flang_3.tar.bz2
@@ -663,6 +667,76 @@ packages:
   license: ISC
   size: 158482
   timestamp: 1725019034582
+- kind: conda
+  name: capnproto
+  version: 1.0.2
+  build: h766bdaa_2
+  build_number: 2
+  subdir: linux-64
+  url: https://conda.anaconda.org/conda-forge/linux-64/capnproto-1.0.2-h766bdaa_2.conda
+  sha256: e80d7a2a433037656284fcea237f70a29659906fef011f351960355c2542fc19
+  md5: 341ff15870e42dc2ac6a660b6aeb3245
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgcc >=13
+  - libstdcxx >=13
+  - libzlib >=1.3.1,<2.0a0
+  - openssl >=3.3.2,<4.0a0
+  license: MIT
+  size: 3967795
+  timestamp: 1728321274561
+- kind: conda
+  name: capnproto
+  version: 1.0.2
+  build: hb5d7e06_2
+  build_number: 2
+  subdir: win-64
+  url: https://conda.anaconda.org/conda-forge/win-64/capnproto-1.0.2-hb5d7e06_2.conda
+  sha256: 2b68241ce5908374786b8ffe79efa97e11410a7003b36dc74be3dd0e37b22107
+  md5: 96fff88fd33194c1324ece6e94817668
+  depends:
+  - libzlib >=1.3.1,<2.0a0
+  - openssl >=3.3.2,<4.0a0
+  - ucrt >=10.0.20348.0
+  - vc >=14.2,<15
+  - vc14_runtime >=14.29.30139
+  license: MIT
+  size: 8771194
+  timestamp: 1728321975836
+- kind: conda
+  name: capnproto
+  version: 1.0.2
+  build: hcee422a_2
+  build_number: 2
+  subdir: osx-arm64
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/capnproto-1.0.2-hcee422a_2.conda
+  sha256: 5e7fbc51f6aa4a164f47f81b1870ba93e4fdec573742f7718288203da61eb08d
+  md5: e1720fdfdf3dfc4a03dd7fd5f6564b9d
+  depends:
+  - __osx >=11.0
+  - libcxx >=17
+  - libzlib >=1.3.1,<2.0a0
+  - openssl >=3.3.2,<4.0a0
+  license: MIT
+  size: 2910053
+  timestamp: 1728321260824
+- kind: conda
+  name: capnproto
+  version: 1.0.2
+  build: heb0326a_2
+  build_number: 2
+  subdir: osx-64
+  url: https://conda.anaconda.org/conda-forge/osx-64/capnproto-1.0.2-heb0326a_2.conda
+  sha256: 067493bfa390971a25e82ecfadf57891f5c63359ad49933f0f7cdd4af4925cdc
+  md5: f1187ef74d7f8813f8ad3df9caaa8177
+  depends:
+  - __osx >=10.13
+  - libcxx >=17
+  - libzlib >=1.3.1,<2.0a0
+  - openssl >=3.3.2,<4.0a0
+  license: MIT
+  size: 2891123
+  timestamp: 1728321264577
 - kind: conda
   name: catch2
   version: 3.7.1
