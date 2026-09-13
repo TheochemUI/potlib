@@ -46,7 +46,8 @@ enum class PotType {
   D4,          //!<  Grimme DFT-D4 via dftd4 (in-process Potential summand).
   Expr,        //!<  Lepton expression over named Potential children.
   Uma,         //!<  UMA / OMol via vesin + AOTInductor .pt2.
-  Skala        //!<  Skala XC on NWChem DFT (libnwchemc).
+  Skala,       //!<  Skala XC on NWChem DFT (libnwchemc).
+  MOPAC        //!<  AM1 via runtime-loaded mopacc C ABI engine.
 };
 
 } // namespace rgpot
