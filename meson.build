@@ -629,6 +629,7 @@ endif
 # --------------------- Projects
 _incdirs += [include_directories('CppCore')]
 subdir('CppCore')
+rgpot_has_rpc = _rpc_stack
 if get_option('with_rpc_client_only')
     rgpot_dep = declare_dependency(
         include_directories: _incdirs,
