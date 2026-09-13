@@ -172,6 +172,7 @@ if not get_option('with_rpc_client_only')
         link_with: rgpot,
         dependencies: rgpot_deps,
         include_directories: _incdirs,
+        compile_args: _args,
     )
 
     # The Fortran kernels must stay invisible outside librgpot: an
