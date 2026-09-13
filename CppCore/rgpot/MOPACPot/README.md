@@ -3,8 +3,7 @@
 rgpot dlopens [`libmopacc.so`](https://github.com/OmniPotentRPC/mopacc).
 This directory is the frontend only. OpenMOPAC lives in mopacc.
 
-Not the eOn AMS MOPAC engine. Not an Expr term. Params are packed
-`MopacCParams`, not Cap'n Proto. Default Hamiltonian is AM1; the
+Params are packed `MopacCParams`. Default Hamiltonian is AM1; the
 engine is every OpenMOPAC model plus SCF / relax / vibe.
 
 ```

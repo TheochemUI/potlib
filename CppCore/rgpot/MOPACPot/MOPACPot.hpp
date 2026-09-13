@@ -5,8 +5,7 @@
 /**
  * @brief OpenMOPAC frontend. Pure consumer of libmopacc.so.
  *
- * Packed MopacCParams, not Cap'n Proto. Default model is AM1.
- * Not the eOn AMS MOPAC engine.
+ * Packed MopacCParams. Default model is AM1.
  */
 
 #include "rgpot/Potential.hpp"
