@@ -48,6 +48,10 @@ if not get_option('with_rpc_client_only')
     subdir('rgpot/ZBL')  # 'zbl'
     rgpotentials += [zbl]
 
+    # Pure dlopen consumer of split mopacc (no Cap'n Proto, no OpenMOPAC embed).
+    subdir('rgpot/MOPACPot')  # 'mopacpot'
+    rgpotentials += [mopacpot]
+
     subdir('rgpot/CuH2')  # 'cuh2': slab-geometry helpers
     rgpotentials += [cuh2]
 
@@ -606,6 +610,55 @@ if get_option('with_tests')
             ]
         endif
     endif
+    if not get_option('with_rpc_client_only')
+        mopacc_fake_engine = shared_library(
+            'mopacc_fake_engine',
+            sources: ['tests/mopacc_fake_engine.c'],
+            include_directories: include_directories('rgpot/MOPACPot'),
+            install: false,
+        )
+        mopacc_fake_env = environment()
+        mopacc_fake_env.set(
+            'RGPOT_MOPACC_ENGINE',
+            mopacc_fake_engine.full_path(),
+        )
+        test(
+            'MOPACPotTest',
+            executable(
+                'mopac_pot_test',
+                sources: ['tests/MOPACPotTest.cc'],
+                dependencies: test_deps,
+                include_directories: _incdirs + ['.'],
+                cpp_args: test_args,
+                link_with: _linkto,
+                link_language: 'cpp',
+            ),
+            env: mopacc_fake_env,
+            depends: mopacc_fake_engine,
+            workdir: meson.source_root(),
+            suite: 'mopac',
+        )
+        test(
+            'test_mopac_abi',
+            executable(
+                'test_mopac_abi',
+                sources: ['tests/test_mopac_abi_main.c'],
+                dependencies: [mopac_abi_stub_dep],
+                include_directories: include_directories('rgpot/MOPACPot'),
+            ),
+            suite: 'mopac',
+        )
+        test(
+            'MOPACDlopenContract',
+            find_program('python3'),
+            args: [
+                meson.current_source_dir() / 'tests/test_mopac_dlopen_contract.py',
+                meson.source_root(),
+            ],
+            suite: 'mopac',
+        )
+    endif
+
     foreach test : test_array
         test(
             test.get(0),
