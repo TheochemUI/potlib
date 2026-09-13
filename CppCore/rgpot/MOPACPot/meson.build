@@ -24,15 +24,15 @@ mopacpot = static_library(
     'MOPACPot.cc',
     dependencies: _deps + [mopac_dl_dep],
     cpp_args: _args + mopac_frontend_cpp_args,
-    include_directories: _incdirs + [mopac_inc],
+    include_directories: ['../../'],
     pic: true,
-    install: not meson.is_subproject(),
+    install: false,
 )
 
 mopacpot_dep = declare_dependency(
     link_with: [mopacpot],
     dependencies: [mopac_dl_dep],
-    include_directories: _incdirs + [mopac_inc],
+    include_directories: ['../../'],
     compile_args: mopac_frontend_cpp_args,
 )
 
