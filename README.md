@@ -205,9 +205,21 @@ RPC client types:
 </tr>
 
 <tr>
+<td class="org-left"><code>UmaPot</code></td>
+<td class="org-left"><code>Uma:&lt;model.pt2&gt;</code></td>
+<td class="org-left">UMA / OMol AOTInductor <code>.pt2</code>. Vesin neighbors, one package per composition. See <code>CppCore/rgpot/UmaPot/README.md</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SkalaPot</code></td>
+<td class="org-left"><code>Skala</code></td>
+<td class="org-left">Skala XC on NWChem DFT via <code>libnwchemc</code>.</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>MOPACPot</code></td>
 <td class="org-left"><code>MOPAC</code></td>
-<td class="org-left">Frontend always builds; load <code>libmopacc</code> from the split <a href="https://github.com/OmniPotentRPC/mopacc">mopacc</a> project at runtime (OpenMOPAC AM1). Packed params, not Cap'n Proto. Not the AMS MOPAC engine</td>
+<td class="org-left">Frontend always builds; load <code>libmopacc</code> from the split <a href="https://github.com/OmniPotentRPC/mopacc">mopacc</a> project at runtime (OpenMOPAC). Packed params. Default model AM1.</td>
 </tr>
 </tbody>
 </table>

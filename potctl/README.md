@@ -52,7 +52,7 @@ CI builds **portable/fat** potctl per OS family (`setup-ci-tools`): **Linux** �
 ## Design rule
 
 Anything that is “assert / emit env / rewrite semver / CI step body” belongs in `potctl` with
-`cargo test -p potctl`. Nickel (or hand orchestrator until `orchestrator.ncl`) owns the job
+`cargo test -p potctl`. Nickel (or hand orchestrator until `orchestrator.ncl`) writes the job
 graph and matrices only; GHA steps should be thin `potctl ci …` lines.
 
 | `potctl ci` verb | Role |

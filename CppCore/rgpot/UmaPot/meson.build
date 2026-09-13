@@ -25,7 +25,13 @@ if _rpc_stack
         # ptlrpc_dep carries the generated Potentials.capnp.h include
         # view plus the schema TU objects (final-binary rule: a plugin
         # is a leaf, no double-compile risk).
-        dependencies: _deps + [torch_dep, dl_dep, vesin_dep, capnp_rpc_dep, ptlrpc_dep],
+        dependencies: _deps + [
+            torch_dep,
+            dl_dep,
+            vesin_dep,
+            capnp_rpc_dep,
+            ptlrpc_dep,
+        ],
         cpp_args: _args + ['-DRGPOT_ENGINE_BUILD'],
         include_directories: ['../../'],
         install: not meson.is_subproject(),
@@ -39,5 +45,7 @@ if _rpc_stack
         include_directories: ['../../'],
     )
 else
-    message('uma_engine skipped: capnp config needs with_rpc or with_rpc_client_only')
+    message(
+        'uma_engine skipped: capnp config needs with_rpc or with_rpc_client_only',
+    )
 endif

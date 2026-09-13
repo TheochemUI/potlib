@@ -40,7 +40,7 @@ let P = S.pins in
               sudo apt-get install -y -qq cppcheck clang-format
             if ! command -v snapper >/dev/null 2>&1 && ! command -v snapper-fmt >/dev/null 2>&1; then
               curl --proto '=https' --tlsv1.2 -LsSf \
-                https://github.com/TurtleTech-ehf/snapper/releases/latest/download/snapper-fmt-installer.sh | sh || true
+                https://github.com/TurtleTech-ehf/snapper/releases/download/v0.10.0/snapper-fmt-installer.sh | sh || true
               echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
             fi
             if command -v snapper-fmt >/dev/null 2>&1 && ! command -v snapper >/dev/null 2>&1; then

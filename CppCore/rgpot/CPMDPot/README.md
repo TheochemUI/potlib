@@ -1,6 +1,6 @@
 # CPMDPot
 
-`CPMDPot` is the rgpot frontend for CPMD calculations. It owns the C++ and RPC
+`CPMDPot` is the rgpot frontend for CPMD calculations. It is the C++ and RPC
 side of the integration, then loads a split `libcpmdc` engine at runtime and
 calls the stable C ABI declared in `cpmd_c_abi.h`.
 

@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- towncrier release notes start -->
 
+## [3.2.0](https://github.com/OmniPotentRPC/rgpot/tree/3.2.0) - 2026-09-13
+
+### Added
+
+- MOPACPot dlopens the split [mopacc](https://github.com/OmniPotentRPC/mopacc)
+  engine (`libmopacc.so`, OpenMOPAC). Packed `MopacCParams`.
+  Default model is AM1.
+- NWChem RPC specifications accept basis, theory, exchange-correlation, and SCF
+  iteration controls for reproducible electronic-structure requests.
+- Skala XC is available as C++ ``SkalaPot``: NWChem DFT through ``libnwchemc``
+  with ``dft.xc`` defaulting to ``skala-1.1``. Enable with ``-Dwith_skala=true``
+  (requires ``-Dwith_rpc=true``).
+- UmaPot evaluates UMA / OMol from an AOTInductor ``.pt2`` (``scripts/export_uma_aoti.py``): vesin builds the neighbor list, the compiled graph returns energy and forces. Charge and spin are per-call tensor inputs. One ``.pt2`` is exported per composition (``merge_mole``); the sidecar records cutoff, neighbors, task, charge, spin, ``z_set``, and label. ``scripts/export_baker_uma_aoti.py`` walks Baker endpoints and deduplicates by ``(z_set, charge, spin)``. potserv accepts ``Uma:<model.pt2>`` and ``Uma:<model.pt2>:<task>``.
+
+### Fixed
+
+- CI pins snapper-fmt to v0.10.0. Latest 0.11.2 panics on UTF-8 in org files.
+- Metatomic-enabled build-tree executables locate Torch and metatomic shared
+  libraries without an ``LD_LIBRARY_PATH`` override.
+- UmaPot clears PT_GNU_STACK PF_X on AOTI wrapper.so before dlopen, so Elja-traced ``.pt2`` packages load on hosts that refuse an executable stack. ``scripts/export_uma_aoti.py`` applies the same rewrite at mint time.
+
+
 ## [3.1.2](https://github.com/OmniPotentRPC/rgpot/tree/3.1.2) - 2026-09-04
 
 ### Fixed

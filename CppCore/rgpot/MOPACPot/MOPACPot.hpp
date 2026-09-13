@@ -3,9 +3,9 @@
 // Copyright 2023--present rgpot developers
 
 /**
- * @brief OpenMOPAC AM1 frontend. Pure consumer of libmopacc.so.
+ * @brief OpenMOPAC frontend. Pure consumer of libmopacc.so.
  *
- * Packed MopacCParams, not Cap'n Proto. Not the eOn AMS MOPAC engine.
+ * Packed MopacCParams. Default model is AM1.
  */
 
 #include "rgpot/Potential.hpp"

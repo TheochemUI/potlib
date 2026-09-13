@@ -47,7 +47,7 @@ enum class PotType {
   Expr,        //!<  Lepton expression over named Potential children.
   Uma,         //!<  UMA / OMol via vesin + AOTInductor .pt2.
   Skala,       //!<  Skala XC on NWChem DFT (libnwchemc).
-  MOPAC        //!<  AM1 via runtime-loaded mopacc C ABI engine.
+  MOPAC        //!<  OpenMOPAC via runtime-loaded mopacc C ABI engine.
 };
 
 } // namespace rgpot

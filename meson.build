@@ -1,7 +1,7 @@
 project(
     'rgpot',
     'cpp',
-    version: '3.1.2',
+    version: '3.2.0',
     default_options: ['warning_level=2', 'cpp_std=c++20'],
 )
 # IMPORTANT!! warning_level=3 passes -fimplicit-none
@@ -214,7 +214,9 @@ if has_fortran
             )
             if _pf.returncode() == 0
                 _rt_path = _pf.stdout().strip()
-                if _rt_path != _cand and _fs_rt.is_absolute(_rt_path) and _fs_rt.exists(_rt_path)
+                if _rt_path != _cand and _fs_rt.is_absolute(_rt_path) and _fs_rt.exists(
+                    _rt_path,
+                )
                     fortran_rt_deps += declare_dependency(link_args: [_rt_path])
                     message('fortran runtime (compiler file): ' + _rt_path)
                     break
