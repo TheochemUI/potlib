@@ -201,7 +201,7 @@ RPC client types:
 <tr>
 <td class="org-left"><code>MOPACPot</code></td>
 <td class="org-left"><code>MOPAC</code></td>
-<td class="org-left">Frontend always builds; load <code>libmopacc</code> from the split <a href="https://github.com/OmniPotentRPC/mopacc">mopacc</a> project at runtime (OpenMOPAC AM1). Packed params, not Cap'n Proto. Not the AMS MOPAC engine</td>
+<td class="org-left">Frontend always builds; load <code>libmopacc</code> from the split <a href="https://github.com/OmniPotentRPC/mopacc">mopacc</a> project at runtime (OpenMOPAC). Packed params, not Cap'n Proto. Default model AM1. Not the AMS MOPAC engine</td>
 </tr>
 </tbody>
 </table>
