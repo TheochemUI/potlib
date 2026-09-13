@@ -1,0 +1,76 @@
+.. index:: pair: class; rgpot::SkalaPot
+.. _doxid-classrgpot_1_1_skala_pot:
+
+class rgpot::SkalaPot
+=====================
+
+.. toctree::
+	:hidden:
+
+Overview
+~~~~~~~~
+
+DFT oracle: NWChem SCF, Skala exchange-correlation. :ref:`More...<details-classrgpot_1_1_skala_pot>`
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <SkalaPot.hpp>
+	
+	class SkalaPot: public rgpot::Potential< SkalaPot > {
+	public:
+		// construction
+	
+		:target:`SkalaPot<doxid-classrgpot_1_1_skala_pot_1a927f2bf68802b77764de4d7c246875c3>`();
+		:target:`SkalaPot<doxid-classrgpot_1_1_skala_pot_1acf416a3a9be3a8b37dda8341ea97125a>`(const :ref:`SkalaConfig<doxid-structrgpot_1_1_skala_config>`& config);
+		:target:`SkalaPot<doxid-classrgpot_1_1_skala_pot_1a9444f9ba320ea9cc377539cff5190324>`(const SkalaPot&);
+		:target:`~SkalaPot<doxid-classrgpot_1_1_skala_pot_1a0302e0fe006ba246cda1ed1b575406f2>`();
+
+		// methods
+	
+		SkalaPot& :target:`operator=<doxid-classrgpot_1_1_skala_pot_1aa417e404fd4b109f66415459928f44eb>`(const SkalaPot&);
+		void :target:`forceImpl<doxid-classrgpot_1_1_skala_pot_1a41afdbffcd6bc808de6738400d312bba>`(const :ref:`ForceInput<doxid-structrgpot_1_1_force_input>`& in, :ref:`ForceOut<doxid-structrgpot_1_1_force_out>`* out) const;
+		virtual :ref:`PotCaps<doxid-structrgpot_1_1_pot_caps>` :ref:`caps<doxid-classrgpot_1_1_skala_pot_1ada6cc6b11208d1026042c892d762a7d3>`() const;
+		const :ref:`SkalaConfig<doxid-structrgpot_1_1_skala_config>`& :target:`config<doxid-classrgpot_1_1_skala_pot_1ad8b5fcf117ca0f37ed67497a5718fc9a>`() const;
+		void :target:`setChargeMultiplicity<doxid-classrgpot_1_1_skala_pot_1a861f23b7f9b4fb12b68e7a5c06ce37e5>`(int charge, int multiplicity);
+		bool :target:`available<doxid-classrgpot_1_1_skala_pot_1ab778608d37b022e90bd12674fcfb75e7>`() const;
+		void :target:`getParams<doxid-classrgpot_1_1_skala_pot_1aefdf956a067fb4f9e49a64aaba3bc14d>`(::NWChemParams::Builder out) const;
+		virtual uint64_t :ref:`paramsKey<doxid-classrgpot_1_1_skala_pot_1a9c884d90c4e85fd97136fa8b005277fc>`() const;
+	};
+.. _details-classrgpot_1_1_skala_pot:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+DFT oracle: NWChem SCF, Skala exchange-correlation.
+
+Builds an NWChemParams message (theory=dft, dft.xc=skala-1.1 by default) and evaluates through :ref:`NWChemPot <doxid-classrgpot_1_1_n_w_chem_pot>`. No Python helper.
+
+Methods
+-------
+
+.. index:: pair: function; caps
+.. _doxid-classrgpot_1_1_skala_pot_1ada6cc6b11208d1026042c892d762a7d3:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual :ref:`PotCaps<doxid-structrgpot_1_1_pot_caps>` caps() const
+
+Concurrency and evaluation capabilities of this potential.
+
+Multi-threaded callers (NEB images, dimer endpoints) derive their sharing and cloning policy from this instead of hard-coded lists.
+
+.. index:: pair: function; paramsKey
+.. _doxid-classrgpot_1_1_skala_pot_1a9c884d90c4e85fd97136fa8b005277fc:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual uint64_t paramsKey() const
+
+Fingerprint of the potential's parameter set.
+
+Mixed into the result-cache key so results never cross parameter sets. Implementations hash their config field by field (see :ref:`ParamHash.hpp <doxid-_param_hash_8hpp_source>`) plus a kernel-version salt that changes whenever the numerics change. The default (0) suits parameter-free potentials whose numerics never changed.
+

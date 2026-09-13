@@ -1,0 +1,67 @@
+.. index:: pair: struct; RgpotEngineNeighborOptions
+.. _doxid-struct_rgpot_engine_neighbor_options:
+
+struct RgpotEngineNeighborOptions
+=================================
+
+.. toctree::
+	:hidden:
+
+Overview
+~~~~~~~~
+
+Neighbor-list declaration. :ref:`More...<details-struct_rgpot_engine_neighbor_options>`
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <engine_c_abi.h>
+	
+	struct RgpotEngineNeighborOptions {
+		// fields
+	
+		double :ref:`cutoff<doxid-struct_rgpot_engine_neighbor_options_1aa5e83b6cbccce511fde0ed38eeded56a>`;
+		int :ref:`full_list<doxid-struct_rgpot_engine_neighbor_options_1a1dccb36593085c28e44fecc89a7788a5>`;
+		int :ref:`strict<doxid-struct_rgpot_engine_neighbor_options_1a5aa14f41a76ca06212d5b337a669e6ad>`;
+	};
+.. _details-struct_rgpot_engine_neighbor_options:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Neighbor-list declaration. An engine exporting this symbol expects the host to provision every declared list before evaluation; an engine omitting it self-provisions (the UMA molecular-box engine builds its own complete graph). strict zero permits over-inclusion.
+
+Fields
+------
+
+.. index:: pair: variable; cutoff
+.. _doxid-struct_rgpot_engine_neighbor_options_1aa5e83b6cbccce511fde0ed38eeded56a:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	double cutoff
+
+Angstrom
+
+.. index:: pair: variable; full_list
+.. _doxid-struct_rgpot_engine_neighbor_options_1a1dccb36593085c28e44fecc89a7788a5:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int full_list
+
+1 full, 0 half
+
+.. index:: pair: variable; strict
+.. _doxid-struct_rgpot_engine_neighbor_options_1a5aa14f41a76ca06212d5b337a669e6ad:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int strict
+
+0: over-inclusion tolerated
+

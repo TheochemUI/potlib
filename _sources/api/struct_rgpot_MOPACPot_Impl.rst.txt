@@ -1,0 +1,24 @@
+.. index:: pair: struct; rgpot::MOPACPot::Impl
+.. _doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_impl:
+
+struct rgpot::MOPACPot::Impl
+============================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	struct Impl {
+		// fields
+	
+		EngineBundle :target:`bundle<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_impl_1a0b0c15a041c176e547a24c46d5071130>`;
+		:ref:`MopacCParams<doxid-struct_mopac_c_params>` :target:`params<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_impl_1a9f03628920ffd6bbda8d1e344dab1ac4>` {};
+		std::string :target:`engine_path<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_impl_1a8bf6767e94115d67e7a226b6accd3b4c>`;
+		std::vector<double> :target:`grad_scratch<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_impl_1ad5c72e9e33392d1bd3ddf66fef080a00>`;
+	};

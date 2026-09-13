@@ -1,0 +1,99 @@
+.. index:: pair: struct; RgpotEngineGprGate
+.. _doxid-struct_rgpot_engine_gpr_gate:
+
+struct RgpotEngineGprGate
+=========================
+
+.. toctree::
+	:hidden:
+
+Overview
+~~~~~~~~
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	struct RgpotEngineGprGate {
+		// fields
+	
+		unsigned :ref:`magic<doxid-struct_rgpot_engine_gpr_gate_1a02cfba10d13f327f86eeac0fa46b34ec>`;
+		unsigned :ref:`version<doxid-struct_rgpot_engine_gpr_gate_1aa0d63e8ba56c1643fe067f0af7401abe>`;
+		double :ref:`sigmaLoFactor<doxid-struct_rgpot_engine_gpr_gate_1a9ccfbaca8e38f8e64c61ce5e4502c448>`;
+		double :ref:`sigmaHiFactor<doxid-struct_rgpot_engine_gpr_gate_1ab15375a5f8ff44c2462ce2d168341c5c>`;
+		double :ref:`certifyBelowForce<doxid-struct_rgpot_engine_gpr_gate_1acd649656d8f664f58c3297c22e196683>`;
+		unsigned long long :ref:`refitTrainingRevisions<doxid-struct_rgpot_engine_gpr_gate_1a2d7b30f4758ec9ea804d417420716676>`;
+	};
+.. _details-struct_rgpot_engine_gpr_gate:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Fields
+------
+
+.. index:: pair: variable; magic
+.. _doxid-struct_rgpot_engine_gpr_gate_1a02cfba10d13f327f86eeac0fa46b34ec:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	unsigned magic
+
+RGPOT_ENGINE_GPR_GATE_MAGIC
+
+.. index:: pair: variable; version
+.. _doxid-struct_rgpot_engine_gpr_gate_1aa0d63e8ba56c1643fe067f0af7401abe:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	unsigned version
+
+RGPOT_ENGINE_GPR_GATE_VERSION
+
+.. index:: pair: variable; sigmaLoFactor
+.. _doxid-struct_rgpot_engine_gpr_gate_1a9ccfbaca8e38f8e64c61ce5e4502c448:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	double sigmaLoFactor
+
+Answer from the model below this multiple of its likelihood noise.
+
+.. index:: pair: variable; sigmaHiFactor
+.. _doxid-struct_rgpot_engine_gpr_gate_1ab15375a5f8ff44c2462ce2d168341c5c:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	double sigmaHiFactor
+
+Above this multiple the geometry is not learned from.
+
+.. index:: pair: variable; certifyBelowForce
+.. _doxid-struct_rgpot_engine_gpr_gate_1acd649656d8f664f58c3297c22e196683:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	double certifyBelowForce
+
+Predicted force magnitude under this (eV/Angstrom) forces a ground-truth call, so a driver's convergence claim is checked rather than trusted. Non-positive disables the certificate.
+
+.. index:: pair: variable; refitTrainingRevisions
+.. _doxid-struct_rgpot_engine_gpr_gate_1a2d7b30f4758ec9ea804d417420716676:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	unsigned long long refitTrainingRevisions
+
+Refit cadence in training-set appends; zero refits at every incorporation boundary.
+

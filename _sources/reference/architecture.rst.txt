@@ -147,7 +147,7 @@ Internally calls ``rgpot_last_error()`` to populate the exception message.
 ``types.hpp``
     Provides ``rgpot::InputSpec`` (a lightweight view over borrowed
 
-input data) and ``rgpot::CalcResult`` (owns the force buffer and stores energy/
+input data) and ``rgpot::CalcResult`` (holds the force buffer and stores energy/
 variance).
 These are distinct from the legacy ``rgpot::ForceInput`` / ``rgpot::ForceOut`` types
 in ``ForceStructs.hpp`` to avoid name collisions.

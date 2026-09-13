@@ -1,0 +1,23 @@
+.. index:: pair: struct; MopacCResult
+.. _doxid-struct_mopac_c_result:
+
+struct MopacCResult
+===================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	struct MopacCResult {
+		// fields
+	
+		int :target:`ok<doxid-struct_mopac_c_result_1a95bbacb3a65601357de423ab40d6bd2e>`;
+		double :target:`energy_h<doxid-struct_mopac_c_result_1a0231e919f2c9111c9155f857eedf3131>`;
+		char :target:`message<doxid-struct_mopac_c_result_1a162a1244160c4dbe5605cfde4f87e0af>`[512];
+	};

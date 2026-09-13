@@ -1,0 +1,67 @@
+.. index:: pair: class; rgpot::MOPACPot
+.. _doxid-classrgpot_1_1_m_o_p_a_c_pot:
+
+class rgpot::MOPACPot
+=====================
+
+.. toctree::
+	:hidden:
+
+	struct_rgpot_MOPACPot_Config.rst
+	struct_rgpot_MOPACPot_Impl.rst
+
+Overview
+~~~~~~~~
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	class MOPACPot: public rgpot::Potential< MOPACPot > {
+	public:
+		// structs
+	
+		struct :ref:`Config<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config>`;
+		struct :ref:`Impl<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_impl>`;
+
+		// construction
+	
+		:target:`MOPACPot<doxid-classrgpot_1_1_m_o_p_a_c_pot_1a761f6b78886039072a86743bc08de9ee>`();
+		:target:`MOPACPot<doxid-classrgpot_1_1_m_o_p_a_c_pot_1a80b592a95a8268edcc872079253b0fd7>`(const :ref:`Config<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config>`& cfg);
+		:target:`MOPACPot<doxid-classrgpot_1_1_m_o_p_a_c_pot_1abc33bac54c3f49883731524f766dae1d>`(const MOPACPot&);
+		:target:`~MOPACPot<doxid-classrgpot_1_1_m_o_p_a_c_pot_1a5e3cbe9b7bf3a09fa3c1cf3ed4148e9d>`();
+
+		// methods
+	
+		MOPACPot& :target:`operator=<doxid-classrgpot_1_1_m_o_p_a_c_pot_1ad99148c04e0962f2a651c62960c9ac2c>`(const MOPACPot&);
+		void :target:`forceImpl<doxid-classrgpot_1_1_m_o_p_a_c_pot_1ac557bb76fb85cb7182d969ca0ef2f69c>`(const :ref:`ForceInput<doxid-structrgpot_1_1_force_input>`& in, :ref:`ForceOut<doxid-structrgpot_1_1_force_out>`* out) const;
+		virtual :ref:`PotCaps<doxid-structrgpot_1_1_pot_caps>` :ref:`caps<doxid-classrgpot_1_1_m_o_p_a_c_pot_1a46ce3fabb01b1387939e462b4b45a9d6>`() const;
+		bool :target:`available<doxid-classrgpot_1_1_m_o_p_a_c_pot_1a3c23c51c1b41d439d2b90aa271cad842>`() const;
+		static bool :target:`probe_available<doxid-classrgpot_1_1_m_o_p_a_c_pot_1af30e6c2b3faa06382777efc86a824c8b>`();
+		static bool :target:`abi_available<doxid-classrgpot_1_1_m_o_p_a_c_pot_1abe54b2b60b901874120a848113f425d9>`();
+	};
+.. _details-classrgpot_1_1_m_o_p_a_c_pot:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Methods
+-------
+
+.. index:: pair: function; caps
+.. _doxid-classrgpot_1_1_m_o_p_a_c_pot_1a46ce3fabb01b1387939e462b4b45a9d6:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual :ref:`PotCaps<doxid-structrgpot_1_1_pot_caps>` caps() const
+
+Concurrency and evaluation capabilities of this potential.
+
+Multi-threaded callers (NEB images, dimer endpoints) derive their sharing and cloning policy from this instead of hard-coded lists.
+

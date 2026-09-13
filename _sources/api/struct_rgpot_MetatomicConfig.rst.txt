@@ -32,6 +32,10 @@ Overview
 		bool :target:`so3_probe_scatter<doxid-structrgpot_1_1_metatomic_config_1a85f3588b5538a741e4901a837117e355>` = false;
 		TorchDeterminismPolicy :target:`torch_determinism<doxid-structrgpot_1_1_metatomic_config_1a5abb79bcbeb0bef2e1f1726cf1da8cdb>` = TorchDeterminismPolicy::Fast;
 		std::string :ref:`engine_path<doxid-structrgpot_1_1_metatomic_config_1a583641dcd773db985882bb1d51942920>`;
+		std::string :ref:`task_name<doxid-structrgpot_1_1_metatomic_config_1afc2411b4d092db3f6247fdafb917aa3c>`;
+		int :target:`charge<doxid-structrgpot_1_1_metatomic_config_1af1c8a89df8c7422f57ce62b14352571f>` = 0;
+		int :ref:`spin<doxid-structrgpot_1_1_metatomic_config_1a9f645071aa805eb15dd767898f5b6343>` = 1;
+		bool :ref:`attach_system_extras<doxid-structrgpot_1_1_metatomic_config_1af7910621a82733a34263031032e71f7c>` = false;
 	};
 .. _details-structrgpot_1_1_metatomic_config:
 
@@ -52,4 +56,34 @@ Fields
 	std::string engine_path
 
 Optional explicit path to libmetatomic_engine.so (dlopen path).
+
+.. index:: pair: variable; task_name
+.. _doxid-structrgpot_1_1_metatomic_config_1afc2411b4d092db3f6247fdafb917aa3c:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	std::string task_name
+
+UMA / OMol task head baked into or selected by the exported model.
+
+.. index:: pair: variable; spin
+.. _doxid-structrgpot_1_1_metatomic_config_1a9f645071aa805eb15dd767898f5b6343:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int spin = 1
+
+Spin multiplicity (1 = singlet). Attached as system extra data.
+
+.. index:: pair: variable; attach_system_extras
+.. _doxid-structrgpot_1_1_metatomic_config_1af7910621a82733a34263031032e71f7c:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	bool attach_system_extras = false
+
+Attach charge/spin TensorMaps on every System (UMA omol).
 

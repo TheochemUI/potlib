@@ -1,0 +1,26 @@
+.. index:: pair: struct; rgpot::MOPACPot::Config
+.. _doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config:
+
+struct rgpot::MOPACPot::Config
+==============================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	struct Config {
+		// fields
+	
+		int :target:`charge<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config_1adcf1c5c05c51d0ab3aa2157c1717d9cf>` = 0;
+		int :target:`spin<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config_1a105f45ae3049268f019d0c03a88f7cbe>` = 0;
+		int :target:`model<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config_1ab9e7b8997517667c1ced51edc350439e>` = 4;
+		double :target:`tolerance<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config_1a2c09d2b3d9858793a57d4344145eff8c>` = 1.0;
+		int :target:`max_time<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config_1ad7eda01b8dc3c9ff1d45b5ba2acb8753>` = 3600;
+		std::string :target:`engine_path<doxid-structrgpot_1_1_m_o_p_a_c_pot_1_1_config_1a1fba6db5012ee9a4b0da8f77ca789451>`;
+	};

@@ -1,0 +1,90 @@
+.. index:: pair: class; rgpot::UmaPot
+.. _doxid-classrgpot_1_1_uma_pot:
+
+class rgpot::UmaPot
+===================
+
+.. toctree::
+	:hidden:
+
+	struct_rgpot_UmaPot_Impl.rst
+
+Overview
+~~~~~~~~
+
+UMA / OMol calculator: vesin neighbor list + AOTI package. :ref:`More...<details-classrgpot_1_1_uma_pot>`
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <UmaPot.hpp>
+	
+	class UmaPot: public rgpot::Potential< UmaPot > {
+	public:
+		// structs
+	
+		struct :ref:`Impl<doxid-structrgpot_1_1_uma_pot_1_1_impl>`;
+
+		// construction
+	
+		:target:`UmaPot<doxid-classrgpot_1_1_uma_pot_1a655f387a6d62f042eaeb31419abb4563>`(const :ref:`UmaConfig<doxid-structrgpot_1_1_uma_config>`& config);
+		:target:`UmaPot<doxid-classrgpot_1_1_uma_pot_1aa6caa9c21cd941376b2acbf511af6458>`(const UmaPot&);
+		:target:`~UmaPot<doxid-classrgpot_1_1_uma_pot_1abe2012c2c7c058e8db383782e6b4ed1d>`();
+
+		// methods
+	
+		UmaPot& :target:`operator=<doxid-classrgpot_1_1_uma_pot_1a71b69e63cef0f518023d3be5d351b912>`(const UmaPot&);
+		void :target:`forceImpl<doxid-classrgpot_1_1_uma_pot_1aded12525fdbb0d25eefdcd9d9c23f159>`(const :ref:`ForceInput<doxid-structrgpot_1_1_force_input>`& in, :ref:`ForceOut<doxid-structrgpot_1_1_force_out>`* out) const;
+		void :ref:`forceBatchImpl<doxid-classrgpot_1_1_uma_pot_1adba21af630a10ae2db55f615b0fdc445>`(const :ref:`ForceBatch<doxid-structrgpot_1_1_force_batch>`& batch) const;
+		virtual :ref:`PotCaps<doxid-structrgpot_1_1_pot_caps>` :ref:`caps<doxid-classrgpot_1_1_uma_pot_1a019bb20075a03501bca579f1000da723>`() const;
+		const :ref:`UmaConfig<doxid-structrgpot_1_1_uma_config>`& :target:`config<doxid-classrgpot_1_1_uma_pot_1aa19325e9a74bb5c0b2f11705b20e6f03>`() const;
+		void :target:`setChargeSpin<doxid-classrgpot_1_1_uma_pot_1a58c1104e4bb45668135c173868eb83be>`(int charge, int spin);
+		virtual uint64_t :ref:`paramsKey<doxid-classrgpot_1_1_uma_pot_1aec8956d8d8fbc5af49d2b69f3e622d5b>`() const;
+	};
+.. _details-classrgpot_1_1_uma_pot:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+UMA / OMol calculator: vesin neighbor list + AOTI package.
+
+Loads an AOTInductor ``.pt2`` exported by ``scripts/export_uma_aoti.py``. Each force call builds a fairchem-convention edge list with vesin and runs the compiled graph. Charge and spin are per-call tensor inputs.
+
+Methods
+-------
+
+.. index:: pair: function; forceBatchImpl
+.. _doxid-classrgpot_1_1_uma_pot_1adba21af630a10ae2db55f615b0fdc445:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	void forceBatchImpl(const :ref:`ForceBatch<doxid-structrgpot_1_1_force_batch>`& batch) const
+
+One AOTI call per chunk of up to the package's batch_max same-composition systems (a NEB band). Band packages carry only the batched graph, so a lone system is padded to two.
+
+.. index:: pair: function; caps
+.. _doxid-classrgpot_1_1_uma_pot_1a019bb20075a03501bca579f1000da723:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual :ref:`PotCaps<doxid-structrgpot_1_1_pot_caps>` caps() const
+
+Concurrency and evaluation capabilities of this potential.
+
+Multi-threaded callers (NEB images, dimer endpoints) derive their sharing and cloning policy from this instead of hard-coded lists.
+
+.. index:: pair: function; paramsKey
+.. _doxid-classrgpot_1_1_uma_pot_1aec8956d8d8fbc5af49d2b69f3e622d5b:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	virtual uint64_t paramsKey() const
+
+Fingerprint of the potential's parameter set.
+
+Mixed into the result-cache key so results never cross parameter sets. Implementations hash their config field by field (see :ref:`ParamHash.hpp <doxid-_param_hash_8hpp_source>`) plus a kernel-version salt that changes whenever the numerics change. The default (0) suits parameter-free potentials whose numerics never changed.
+

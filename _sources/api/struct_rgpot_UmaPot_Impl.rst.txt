@@ -1,0 +1,28 @@
+.. index:: pair: struct; rgpot::UmaPot::Impl
+.. _doxid-structrgpot_1_1_uma_pot_1_1_impl:
+
+struct rgpot::UmaPot::Impl
+==========================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	struct Impl {
+		// fields
+	
+		torch::Device :target:`device<doxid-structrgpot_1_1_uma_pot_1_1_impl_1a86a1f8f6b39f5397f2b73c28c8137c59>` {torch::kCPU};
+		torch::ScalarType :target:`dtype<doxid-structrgpot_1_1_uma_pot_1_1_impl_1a975ee695f0f9e7f874d3636ced59facc>` {torch::kFloat32};
+		double :target:`cutoff<doxid-structrgpot_1_1_uma_pot_1_1_impl_1ad6a7397f173834ec078bf5cdbd11cc51>` {6.0};
+		double :target:`molecular_box<doxid-structrgpot_1_1_uma_pot_1_1_impl_1a27f9d11e74dffefc337a2856fff944e0>` {0.0};
+		int :target:`max_neighbors<doxid-structrgpot_1_1_uma_pot_1_1_impl_1a1185dc2d0adb9f26e064d1515e445024>` {300};
+		int64_t :target:`batch_max<doxid-structrgpot_1_1_uma_pot_1_1_impl_1ae8626f2b728fcd963df63079e5a36352>` {0};
+		std::unique_ptr<torch::inductor::AOTIModelPackageLoader> :target:`loader<doxid-structrgpot_1_1_uma_pot_1_1_impl_1aefb61615049850495794f2a04c4b0eb7>`;
+		std::mutex :target:`mutex<doxid-structrgpot_1_1_uma_pot_1_1_impl_1ae73856e50b723fe45b43ec89e994de98>`;
+	};

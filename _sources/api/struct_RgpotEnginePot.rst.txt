@@ -1,0 +1,21 @@
+.. index:: pair: struct; RgpotEnginePot
+.. _doxid-struct_rgpot_engine_pot:
+
+struct RgpotEnginePot
+=====================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	struct RgpotEnginePot {
+		// fields
+	
+		std::unique_ptr<:ref:`rgpot::UmaPot<doxid-classrgpot_1_1_uma_pot>`> :target:`impl<doxid-struct_rgpot_engine_pot_1a793c61a1eab3877157a8b43168f0c95d>`;
+	};

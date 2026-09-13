@@ -1,0 +1,52 @@
+.. index:: pair: struct; rgpot::SkalaConfig
+.. _doxid-structrgpot_1_1_skala_config:
+
+struct rgpot::SkalaConfig
+=========================
+
+.. toctree::
+	:hidden:
+
+Overview
+~~~~~~~~
+
+Kohn-Sham DFT through libnwchemc, with Skala as the XC keyword. :ref:`More...<details-structrgpot_1_1_skala_config>`
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <SkalaConfig.hpp>
+	
+	struct SkalaConfig {
+		// fields
+	
+		std::string :target:`xc<doxid-structrgpot_1_1_skala_config_1afb297e789cbc1a6ecedd3c6c82107c85>` = "skala-1.1";
+		std::string :target:`basis<doxid-structrgpot_1_1_skala_config_1aa00841e691fe6ca981619aa329dd5a23>` = "def2-tzvp";
+		int :target:`charge<doxid-structrgpot_1_1_skala_config_1af87627c43f6ab3e2d3de2b68165778dc>` = 0;
+		int :ref:`multiplicity<doxid-structrgpot_1_1_skala_config_1afa9977b827b85a5eed86c973349f7697>` = 1;
+		std::string :target:`engine_path<doxid-structrgpot_1_1_skala_config_1a053bf86382d7f0ee57e3197a22efa2be>`;
+		std::string :target:`nwchem_root<doxid-structrgpot_1_1_skala_config_1af6a3b90d056347a49cfe3164a64eaab2>`;
+	};
+.. _details-structrgpot_1_1_skala_config:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Kohn-Sham DFT through libnwchemc, with Skala as the XC keyword.
+
+Skala is not a standalone PES. Energy and forces come from nwchemc_energy_gradient after NWChemParams.dft.xc is set.
+
+Fields
+------
+
+.. index:: pair: variable; multiplicity
+.. _doxid-structrgpot_1_1_skala_config_1afa9977b827b85a5eed86c973349f7697:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	int multiplicity = 1
+
+Spin multiplicity 2S+1 (NWChemParams.multiplicity).
+

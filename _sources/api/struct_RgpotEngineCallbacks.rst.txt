@@ -1,0 +1,25 @@
+.. index:: pair: struct; RgpotEngineCallbacks
+.. _doxid-struct_rgpot_engine_callbacks:
+
+struct RgpotEngineCallbacks
+===========================
+
+.. toctree::
+	:hidden:
+
+Host callbacks for learning engines. oracle evaluates the ground truth (same conventions and three-valued return as rgpot_engine_force; variance is absent because the oracle is exact). on_acquire fires when the engine delegates a point; on_model_update fires after each incorporation with the new model-state value and marks the boundary at which history-based host state (quasi-Newton memory, cached factorizations) must be reset. Either notification pointer may be NULL.
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <engine_c_abi.h>
+	
+	struct RgpotEngineCallbacks {
+		// fields
+	
+		void* :target:`ctx<doxid-struct_rgpot_engine_callbacks_1a8766a63fbd1e74281040e1903196da0d>`;
+		int(* :target:`oracle<doxid-struct_rgpot_engine_callbacks_1ae7dd060f365c965109671e4b6fa4a4b3>`)(void *ctx, long nAtoms, const double *positions, const int *atomicNrs, double *forces, double *energy, const double *box);
+		void(* :target:`on_acquire<doxid-struct_rgpot_engine_callbacks_1acdf8669331279a3b6c3b8c3163aa1fbc>`)(void *ctx, rgpot_engine_acquire_reason reason);
+		void(* :target:`on_model_update<doxid-struct_rgpot_engine_callbacks_1a23f05690c88fc083e590109a41210384>`)(void *ctx, unsigned long long model_state);
+	};

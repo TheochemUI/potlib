@@ -1,0 +1,25 @@
+.. index:: pair: struct; MopacCParams
+.. _doxid-struct_mopac_c_params:
+
+struct MopacCParams
+===================
+
+.. toctree::
+	:hidden:
+
+
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	
+	struct MopacCParams {
+		// fields
+	
+		int :target:`charge<doxid-struct_mopac_c_params_1af22d377dfc4280be5fa9c31fb1505279>`;
+		int :target:`spin<doxid-struct_mopac_c_params_1a4f697bb53342d5c99dd4087358837915>`;
+		int :target:`model<doxid-struct_mopac_c_params_1a83c22288b9705517fd27662d8b05ed01>`;
+		double :target:`tolerance<doxid-struct_mopac_c_params_1afe1e4f6c5c309052f256a2121076b591>`;
+		int :target:`max_time<doxid-struct_mopac_c_params_1a7683055603bbc133ba37b8fdfb37c3d7>`;
+	};

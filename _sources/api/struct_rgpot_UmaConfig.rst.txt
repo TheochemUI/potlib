@@ -1,0 +1,53 @@
+.. index:: pair: struct; rgpot::UmaConfig
+.. _doxid-structrgpot_1_1_uma_config:
+
+struct rgpot::UmaConfig
+=======================
+
+.. toctree::
+	:hidden:
+
+Overview
+~~~~~~~~
+
+UMA / OMol calculator configuration. :ref:`More...<details-structrgpot_1_1_uma_config>`
+
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <UmaConfig.hpp>
+	
+	struct UmaConfig {
+		// fields
+	
+		std::string :target:`model_path<doxid-structrgpot_1_1_uma_config_1a354afb70fc8cc472b6c24f57aa85f1ba>`;
+		std::string :target:`task_name<doxid-structrgpot_1_1_uma_config_1a7dae65e6d9e3f519e0b83c8af8098745>` = "omol";
+		std::string :target:`device<doxid-structrgpot_1_1_uma_config_1a703dfc3320dce519c8f9f4f073f9d413>` = "cpu";
+		int :target:`charge<doxid-structrgpot_1_1_uma_config_1a924777cb90c8653670199479f0d2e5d9>` = 0;
+		int :target:`spin<doxid-structrgpot_1_1_uma_config_1a361b90a87de54893d563a949f7972d15>` = 1;
+		double :ref:`cutoff<doxid-structrgpot_1_1_uma_config_1a63261db84609cde3f7c77d4919a21a59>` = 6.0;
+		int :target:`max_neighbors<doxid-structrgpot_1_1_uma_config_1a87b174d24b7b36ff0a4261a6c11e338e>` = 300;
+	};
+.. _details-structrgpot_1_1_uma_config:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+UMA / OMol calculator configuration.
+
+model_path is an AOTInductor package (.pt2) produced by scripts/export_uma_aoti.py. Neighbor lists are built with vesin and passed as tensors; the compiled graph does not call fairchem.
+
+Fields
+------
+
+.. index:: pair: variable; cutoff
+.. _doxid-structrgpot_1_1_uma_config_1a63261db84609cde3f7c77d4919a21a59:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	double cutoff = 6.0
+
+Cutoff in angstrom. Overridden by the sidecar JSON next to .pt2 when present.
+

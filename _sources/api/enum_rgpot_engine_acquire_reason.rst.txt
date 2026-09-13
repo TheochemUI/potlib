@@ -1,0 +1,73 @@
+.. index:: pair: enum; rgpot_engine_acquire_reason
+.. _doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffef:
+
+enum rgpot_engine_acquire_reason
+================================
+
+Overview
+~~~~~~~~
+
+Why a learning engine delegated a point to the oracle. :ref:`More...<details-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffef>`
+
+.. ref-code-block:: cpp
+	:class: doxyrest-overview-code-block
+
+	#include <engine_c_abi.h>
+
+	enum rgpot_engine_acquire_reason {
+	    :ref:`RGPOT_ACQUIRE_VARIANCE<doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffefae47795c00005b64172c6f14030fe6524>` = 1,
+	    :ref:`RGPOT_ACQUIRE_CERTIFY<doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffefabbb6d36922a3bd36cfe138558ce68fb3>`  = 2,
+	    :ref:`RGPOT_ACQUIRE_BATCH<doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffefa59288e5312dc6694177b05668fabeb68>`    = 3,
+	    :ref:`RGPOT_ACQUIRE_REJECT<doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffefa55b74cde6d431e35c357c1761f1c47dc>`   = 4,
+	};
+
+.. _details-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffef:
+
+Detailed Documentation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Why a learning engine delegated a point to the oracle.
+
+Enum Values
+-----------
+
+.. index:: pair: enumvalue; RGPOT_ACQUIRE_VARIANCE
+.. _doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffefae47795c00005b64172c6f14030fe6524:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	RGPOT_ACQUIRE_VARIANCE
+
+predictive variance above sigma_lo
+
+.. index:: pair: enumvalue; RGPOT_ACQUIRE_CERTIFY
+.. _doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffefabbb6d36922a3bd36cfe138558ce68fb3:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	RGPOT_ACQUIRE_CERTIFY
+
+verifying a surrogate convergence claim
+
+.. index:: pair: enumvalue; RGPOT_ACQUIRE_BATCH
+.. _doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffefa59288e5312dc6694177b05668fabeb68:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	RGPOT_ACQUIRE_BATCH
+
+batched acquisition sweep
+
+.. index:: pair: enumvalue; RGPOT_ACQUIRE_REJECT
+.. _doxid-engine__c__abi_8h_1a0de09379b1e277b837472f09146bffefa55b74cde6d431e35c357c1761f1c47dc:
+
+.. ref-code-block:: cpp
+	:class: doxyrest-title-code-block
+
+	RGPOT_ACQUIRE_REJECT
+
+geometry above sigma_hi, evaluated but not incorporated
+
