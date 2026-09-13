@@ -1,8 +1,8 @@
-# UMA / OMol: vesin neighbor list + AOTInductor .pt2 (needs torch from _deps).
+# UMA / OMol: vesin neighbor list + AOTInductor .pt2 via the Torch dependency.
 uma = static_library(
     'uma',
     'UmaPot.cc',
-    dependencies: _deps + [vesin_dep],
+    dependencies: _deps + [torch_dep, vesin_dep],
     cpp_args: _args,
     include_directories: ['../../'],
     pic: true,
@@ -25,7 +25,7 @@ if _rpc_stack
         # ptlrpc_dep carries the generated Potentials.capnp.h include
         # view plus the schema TU objects (final-binary rule: a plugin
         # is a leaf, no double-compile risk).
-        dependencies: _deps + [dl_dep, vesin_dep, capnp_rpc_dep, ptlrpc_dep],
+        dependencies: _deps + [torch_dep, dl_dep, vesin_dep, capnp_rpc_dep, ptlrpc_dep],
         cpp_args: _args + ['-DRGPOT_ENGINE_BUILD'],
         include_directories: ['../../'],
         install: not meson.is_subproject(),
