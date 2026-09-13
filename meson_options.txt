@@ -1,22 +1,64 @@
 # Booleans
-option('with_tests', type : 'boolean', value : false)
-option('with_examples', type : 'boolean', value : false)
-option('with_xtensor', type : 'boolean', value : false)
-option('with_eigen', type : 'boolean', value : false)
-option('with_rpc', type : 'boolean', value : false)
-option('with_rpc_client_only', type : 'boolean', value : false)
-option('with_cache', type : 'boolean', value : false)
-option('pure_lib', type : 'boolean', value : true)
-option('with_rust_core', type : 'boolean', value : false)
-option('with_xtb', type : 'boolean', value : false)
-option('with_xckernel', type : 'boolean', value : false, description : 'In-process libxckernel XC Fock/fxc (generated C ABI; not a Potential)')
-option('with_dftd3', type : 'boolean', value : false, description : 'Link conda-forge s-dftd3 (simple-dftd3) C API')
-option('with_dftd4', type : 'boolean', value : false, description : 'Link conda-forge dftd4 C API')
+option('with_tests', type: 'boolean', value: false)
+option('with_examples', type: 'boolean', value: false)
+option('with_xtensor', type: 'boolean', value: false)
+option('with_eigen', type: 'boolean', value: false)
+option('with_rpc', type: 'boolean', value: false)
+option('with_rpc_client_only', type: 'boolean', value: false)
+option('with_cache', type: 'boolean', value: false)
+option('pure_lib', type: 'boolean', value: true)
+option('with_rust_core', type: 'boolean', value: false)
+option('with_xtb', type: 'boolean', value: false)
+option(
+    'with_xckernel',
+    type: 'boolean',
+    value: false,
+    description: 'In-process libxckernel XC Fock/fxc (generated C ABI; not a Potential)',
+)
+option(
+    'with_dftd3',
+    type: 'boolean',
+    value: false,
+    description: 'Link conda-forge s-dftd3 (simple-dftd3) C API',
+)
+option(
+    'with_dftd4',
+    type: 'boolean',
+    value: false,
+    description: 'Link conda-forge dftd4 C API',
+)
 # Yields into dftd4 / multicharge wraps (both declare lapack with yield).
 # auto looks for liblapack; wheel/sdist pass openblas (libopenblas).
-option('lapack', type : 'combo', value : 'auto', choices : ['auto', 'mkl', 'mkl-rt', 'openblas', 'netlib', 'custom'], description : 'LAPACK vendor for the dftd4 wrap and nested multicharge')
-option('with_expr', type : 'boolean', value : false, description : 'Compile vendored OpenMM Lepton (third_party/lepton)')
-option('with_tblite', type : 'boolean', value : false)
-option('with_metatomic', type : 'boolean', value : false)
-option('with_python', type : 'boolean', value : false, description : 'Build pip-installable Python package (rgpot._core)')
-option('with_fortran_pots', type : 'feature', value : 'auto', description : 'Fortran-backed potentials (CuH2; grows with the eOn migration). Independent of the RPC options.')
+option(
+    'lapack',
+    type: 'combo',
+    value: 'auto',
+    choices: ['auto', 'mkl', 'mkl-rt', 'openblas', 'netlib', 'custom'],
+    description: 'LAPACK vendor for the dftd4 wrap and nested multicharge',
+)
+option(
+    'with_expr',
+    type: 'boolean',
+    value: false,
+    description: 'Compile vendored OpenMM Lepton (third_party/lepton)',
+)
+option('with_tblite', type: 'boolean', value: false)
+option('with_metatomic', type: 'boolean', value: false)
+option(
+    'with_skala',
+    type: 'boolean',
+    value: false,
+    description: 'Skala XC via NWChemPot / libnwchemc (requires with_rpc)',
+)
+option(
+    'with_python',
+    type: 'boolean',
+    value: false,
+    description: 'Build pip-installable Python package (rgpot._core)',
+)
+option(
+    'with_fortran_pots',
+    type: 'feature',
+    value: 'auto',
+    description: 'Fortran-backed potentials (CuH2; grows with the eOn migration). Independent of the RPC options.',
+)

@@ -14,6 +14,7 @@ _rgpot_srcs += files('rgpot/units.cc')
 # them in when RPC is on (server or client-only); lean -Dwith_rpc=false builds
 # (xtb/tblite/metatomic CI) must not require pkg-config 'capnp-rpc'.
 _rpc_stack = rpc_enabled or get_option('with_rpc_client_only')
+_metatomic_build_rpath = ''
 if _rpc_stack
     subdir('rgpot/rpc')
     # Pure dlopen consumers of split nwchemc / cpmdc; need generated schema only.
@@ -46,6 +47,10 @@ if not get_option('with_rpc_client_only')
 
     subdir('rgpot/ZBL')  # 'zbl'
     rgpotentials += [zbl]
+
+    # Pure dlopen consumer of split mopacc (no Cap'n Proto, no OpenMOPAC embed).
+    subdir('rgpot/MOPACPot')  # 'mopacpot'
+    rgpotentials += [mopacpot]
 
     subdir('rgpot/CuH2')  # 'cuh2': slab-geometry helpers
     rgpotentials += [cuh2]
@@ -99,6 +104,9 @@ if not get_option('with_rpc_client_only')
 
     # MetatomicDlopen frontend always (no torch). Engine/fat pot when has_metatomic.
     subdir('rgpot/MetatomicPot')
+    if has_metatomic
+        _metatomic_build_rpath = _engine_build_rpath
+    endif
     _linkto += [metatomic_dlopen]
     # Fat MetatomicPot NEEDs torch. Folding it into the umbrella makes
     # `import rgpot` (LJ / dlopen) require libtorch — the pip contract is
@@ -106,11 +114,17 @@ if not get_option('with_rpc_client_only')
     # engine plugin (has_metatomic); it is dlopen'd, not linked.
     if has_metatomic and not get_option('with_python')
         rgpotentials += [metatomicpot]
+        subdir('rgpot/UmaPot')
+        rgpotentials += [uma]
     endif
 
     if _rpc_stack
         rgpotentials += [nwchempot]
         rgpotentials += [cpmdpot]
+        if has_skala
+            subdir('rgpot/SkalaPot')
+            rgpotentials += [skala]
+        endif
     endif
 
     _linkto += rgpotentials
@@ -147,6 +161,7 @@ if not get_option('with_rpc_client_only')
         dependencies: rgpot_deps,
         cpp_args: _rgpot_cpp_args,
         link_args: _rgpot_link_args,
+        build_rpath: _metatomic_build_rpath,
         include_directories: _incdirs,
         link_whole: [rgpot_core] + _linkto + _rpc_whole,
         version: meson.project_version(),
@@ -161,6 +176,7 @@ if not get_option('with_rpc_client_only')
         link_with: rgpot,
         dependencies: rgpot_deps,
         include_directories: _incdirs,
+        compile_args: _args,
     )
 
     # The Fortran kernels must stay invisible outside librgpot: an
@@ -190,6 +206,7 @@ endif
 # Thin host links metatomic_dlopen_dep; optional libmetatomic_engine.so holds torch.
 if get_option('with_rpc_client_only') and has_metatomic
     subdir('rgpot/MetatomicPot')
+    _metatomic_build_rpath = _engine_build_rpath
 endif
 
 # ------------------------ Server
@@ -200,6 +217,7 @@ if rpc_enabled and not get_option('with_rpc_client_only')
         link_with: [ptlrpc, _linkto],
         dependencies: _deps + [capnp_rpc_dep, ptlrpc_hdr_dep, vesin_dep] + fortran_rt_deps,
         cpp_args: _args,
+        build_rpath: _metatomic_build_rpath,
         include_directories: _incdirs,
         link_language: 'cpp',
         install: not meson.is_subproject(),
@@ -253,6 +271,7 @@ if get_option('with_examples') and not get_option('with_rpc_client_only')
                 dependencies: _deps + [vesin_dep] + fortran_rt_deps,
                 link_with: _linkto,
                 cpp_args: _args,
+                build_rpath: _metatomic_build_rpath,
             ),
             workdir: meson.source_root() + example.get(3),
         )
@@ -403,7 +422,22 @@ if get_option('with_tests')
                 'MetatomicPotTest.cc',
                 '/CppCore/tests',
             ],
+            [
+                'UmaPotTest',
+                'uma_pot_test',
+                'UmaPotTest.cc',
+                '/CppCore/tests',
+            ],
         ]
+        executable(
+            'uma_ase_parity',
+            sources: ['tests/uma_ase_parity.cc'],
+            dependencies: test_deps,
+            include_directories: _incdirs + ['.'],
+            cpp_args: test_args,
+            link_with: _linkto,
+            link_language: 'cpp',
+        )
     endif
     # NWChem/CPMD frontend tests (need ptlrpc + frontends from _rpc_stack)
     if _rpc_stack and not get_option('with_rpc_client_only')
@@ -428,12 +462,31 @@ if get_option('with_tests')
                 cpp_args: test_args,
                 link_with: _linkto,
                 link_language: 'cpp',
+                build_rpath: _metatomic_build_rpath,
             ),
             env: nwchemc_fake_env,
             depends: nwchemc_fake_engine,
             workdir: meson.source_root(),
             suite: 'nwchem',
         )
+        if has_skala
+            test(
+                'SkalaPotTest',
+                executable(
+                    'skala_pot_test',
+                    sources: ['tests/SkalaPotTest.cc'],
+                    dependencies: test_deps + [ptlrpc_dep],
+                    include_directories: _incdirs + ['.'],
+                    cpp_args: test_args,
+                    link_with: _linkto,
+                    link_language: 'cpp',
+                ),
+                env: nwchemc_fake_env,
+                depends: nwchemc_fake_engine,
+                workdir: meson.source_root(),
+                suite: 'skala',
+            )
+        endif
         test(
             'NWChemPotMessageAbiTest',
             executable(
@@ -444,6 +497,7 @@ if get_option('with_tests')
                 cpp_args: test_args,
                 link_with: _linkto,
                 link_language: 'cpp',
+                build_rpath: _metatomic_build_rpath,
             ),
             env: nwchemc_fake_env,
             depends: nwchemc_fake_engine,
@@ -484,6 +538,7 @@ if get_option('with_tests')
                 cpp_args: test_args,
                 link_with: _linkto,
                 link_language: 'cpp',
+                build_rpath: _metatomic_build_rpath,
             ),
             env: cpmdc_fake_env,
             depends: cpmdc_fake_engine,
@@ -500,6 +555,7 @@ if get_option('with_tests')
                 cpp_args: test_args,
                 link_with: _linkto,
                 link_language: 'cpp',
+                build_rpath: _metatomic_build_rpath,
             ),
             env: cpmdc_fake_env,
             depends: cpmdc_fake_engine,
@@ -555,6 +611,55 @@ if get_option('with_tests')
             ]
         endif
     endif
+    if not get_option('with_rpc_client_only')
+        mopacc_fake_engine = shared_library(
+            'mopacc_fake_engine',
+            sources: ['tests/mopacc_fake_engine.c'],
+            include_directories: include_directories('rgpot/MOPACPot'),
+            install: false,
+        )
+        mopacc_fake_env = environment()
+        mopacc_fake_env.set(
+            'RGPOT_MOPACC_ENGINE',
+            mopacc_fake_engine.full_path(),
+        )
+        test(
+            'MOPACPotTest',
+            executable(
+                'mopac_pot_test',
+                sources: ['tests/MOPACPotTest.cc'],
+                dependencies: test_deps,
+                include_directories: _incdirs + ['.'],
+                cpp_args: test_args,
+                link_with: _linkto,
+                link_language: 'cpp',
+            ),
+            env: mopacc_fake_env,
+            depends: mopacc_fake_engine,
+            workdir: meson.source_root(),
+            suite: 'mopac',
+        )
+        test(
+            'test_mopac_abi',
+            executable(
+                'test_mopac_abi',
+                sources: ['tests/test_mopac_abi_main.c'],
+                dependencies: [mopac_abi_stub_dep],
+                include_directories: include_directories('rgpot/MOPACPot'),
+            ),
+            suite: 'mopac',
+        )
+        test(
+            'MOPACDlopenContract',
+            find_program('python3'),
+            args: [
+                meson.current_source_dir() / 'tests/test_mopac_dlopen_contract.py',
+                meson.source_root(),
+            ],
+            suite: 'mopac',
+        )
+    endif
+
     foreach test : test_array
         test(
             test.get(0),
@@ -566,6 +671,7 @@ if get_option('with_tests')
                 cpp_args: test_args,
                 link_with: _linkto,
                 link_language: 'cpp',
+                build_rpath: _metatomic_build_rpath,
             ),
             workdir: meson.source_root() + test.get(3),
         )
@@ -638,6 +744,7 @@ if get_option('with_tests')
                 cpp_args: test_args,
                 link_with: _linkto,
                 link_language: 'cpp',
+                build_rpath: _metatomic_build_rpath,
             ),
             env: xtb_test_env,
             depends: [xtb_engine],
@@ -653,6 +760,7 @@ if get_option('with_tests')
             cpp_args: test_args,
             link_with: _linkto,
             link_language: 'cpp',
+            build_rpath: _metatomic_build_rpath,
             install: false,
         )
     endif
@@ -674,6 +782,7 @@ if get_option('with_tests')
             cpp_args: pot_bench_args,
             link_with: _linkto,
             link_language: 'cpp',
+            build_rpath: _metatomic_build_rpath,
             install: false,
         )
         benchmark(
@@ -732,6 +841,7 @@ if not meson.is_subproject()
         endif
         if has_metatomic
             _pc_cflags += ['-DRGPOT_HAS_METATOMIC_POT=TRUE']
+            _pc_cflags += ['-DRGPOT_HAS_UMA=TRUE']
         endif
         if has_xtb
             _pc_cflags += ['-DRGPOT_HAS_XTB_POT=TRUE']
@@ -747,6 +857,9 @@ if not meson.is_subproject()
         endif
         if has_expr
             _pc_cflags += ['-DRGPOT_HAS_EXPR=TRUE']
+        endif
+        if has_skala
+            _pc_cflags += ['-DRGPOT_HAS_SKALA=TRUE']
         endif
     endif
     if _rpc_stack

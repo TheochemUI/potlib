@@ -8,7 +8,7 @@ This layout is **better than eleven hand-edited workflows with pin drift**, but 
 | What is OK | What is still rough |
 |------------|---------------------|
 | One PR/main entrypoint (`ci-orchestrator.yml`) + `CI gate` for ruleset | Orchestrator is **hand-maintained YAML** (~650 lines), parallel to nickel mirrors |
-| Nickel owns the five special-purpose workflows; `gha-drift` catches hand-edits there | Job bodies duplicated: orchestrator truth vs `build.ncl`/`prek.ncl`/… audit mirrors |
+| Nickel generates the five special-purpose workflows; `gha-drift` catches hand-edits there | Job bodies duplicated: orchestrator truth vs `build.ncl`/`prek.ncl`/… audit mirrors |
 | `plan.ncl` + `export-plan` for traceability | Plan does **not** drive `needs:` (GHA cannot wire deps from JSON mid-run) |
 | Ruleset lists orchestrator-era check names only | Cosmo/release/docs still separate (correct for triggers/secrets, more mental load) |
 
@@ -80,7 +80,7 @@ Nix flake *and* ad-hoc Janet — strictly worse.
 **Target shape (bodies thin):**
 
 ```yaml
-# nickel owns the job/matrix/needs skeleton; each step body is ~one line
+# nickel writes the job/matrix/needs skeleton; each step body is ~one line
 - run: potctl ci preflight
 - run: potctl ci meson-test --rpc ${{ matrix.rpc }} --cache ${{ matrix.cache }}
 - run: potctl ci cmake-test --rpc ${{ matrix.rpc }} --cache ${{ matrix.cache }}

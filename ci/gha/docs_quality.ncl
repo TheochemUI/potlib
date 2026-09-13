@@ -21,7 +21,7 @@ let P = S.pins in
           name = "Install snapper-fmt",
           run = m%"
             curl --proto '=https' --tlsv1.2 -LsSf \
-              https://github.com/TurtleTech-ehf/snapper/releases/latest/download/snapper-fmt-installer.sh | sh
+              https://github.com/TurtleTech-ehf/snapper/releases/download/v0.10.0/snapper-fmt-installer.sh | sh
             echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
             if command -v snapper-fmt >/dev/null 2>&1 && ! command -v snapper >/dev/null 2>&1; then
               ln -sf "$(command -v snapper-fmt)" "$HOME/.cargo/bin/snapper"
