@@ -187,6 +187,12 @@ RPC client types:
 </tr>
 
 <tr>
+<td class="org-left"><code>UmaPot</code></td>
+<td class="org-left"><code>Uma:&lt;model_path&gt;</code>, <code>Uma:&lt;model_path&gt;:omol</code></td>
+<td class="org-left">Enable with <code>-Dwith_metatomic=true</code>. AOTInductor <code>.pt2</code> plus vesin neighbor lists; charge/spin are per-call tensor inputs</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>NWChemPot</code></td>
 <td class="org-left"><code>NWChem</code></td>
 <td class="org-left">Frontend always builds; load <code>libnwchemc</code> from the split <code>nwchemc</code> project at runtime</td>
@@ -196,6 +202,18 @@ RPC client types:
 <td class="org-left"><code>CPMDPot</code></td>
 <td class="org-left"><code>CPMD</code></td>
 <td class="org-left">Frontend always builds; load <code>libcpmdc</code> from the split <code>cpmdc</code> project at runtime</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>UmaPot</code></td>
+<td class="org-left"><code>Uma:&lt;model.pt2&gt;</code></td>
+<td class="org-left">UMA / OMol AOTInductor <code>.pt2</code>. Vesin neighbors, one package per composition. See <code>CppCore/rgpot/UmaPot/README.md</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SkalaPot</code></td>
+<td class="org-left"><code>Skala</code></td>
+<td class="org-left">Skala XC on NWChem DFT via <code>libnwchemc</code>.</td>
 </tr>
 
 <tr>
