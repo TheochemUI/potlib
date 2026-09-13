@@ -46,7 +46,7 @@ Families: `lda,gga,mgga_tau`. `max_order`: 2 (27 C kernels: 3 energy helpers
 
 ## Dependencies
 
-Libxc owns the functional-derivative tower. Numerical evaluation needs
+Libxc implements the functional-derivative tower. Numerical evaluation needs
 `pylibxc`. **`pylibxc` is not installable from PyPI**; the `pylibxc2` name
 there is an unrelated empty stub. Use conda-forge `pylibxc` (libxc-feedstock
 Python output) via the pixi feature `xckernel`. PySCF lives only in

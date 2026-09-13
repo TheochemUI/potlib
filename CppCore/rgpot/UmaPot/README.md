@@ -1,4 +1,4 @@
-# UmaPot — UMA / OMol AOTInductor frontend
+# UmaPot: UMA / OMol AOTInductor frontend
 
 This is not a fairchem Python calculator and not `MetatomicPot`.
 `UmaPot` loads a compiled AOTInductor package (`.pt2`) that
